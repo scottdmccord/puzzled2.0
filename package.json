@@ -1,0 +1,19 @@
+{
+  "name": "puzzled2.0",
+  "version": "1.0.0",
+  "description": "A second iteration of my first project, Puzzled. This one will be made with React and have user interactivity.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scottdmccord/puzzled2.0.git"
+  },
+  "author": "Scott McCord",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scottdmccord/puzzled2.0/issues"
+  },
+  "homepage": "https://github.com/scottdmccord/puzzled2.0#readme"
+}
