@@ -23,7 +23,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'ReactJS Hello World',
+      title: 'Puzzled 2.0',
       xhtml: true,
       inject: false,
       template: require('html-webpack-template'),
@@ -39,18 +39,10 @@ module.exports = {
     loaders: [
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
       },
       {
-        test: /\.svg$/,
-        loader: 'file-loader?name=/img/[name].[hash:base64:5].[ext]'
-      },
-      {
-        test: /\.gif$/,
-        loader: 'file-loader?name=/img/[name].[hash:base64:5].[ext]'
-      },
-      {
-        test: /\.jpg$/,
+        test: /\.(svg|gif|png|jpg)$/,
         loader: 'file-loader?name=/img/[name].[hash:base64:5].[ext]'
       },
       {
