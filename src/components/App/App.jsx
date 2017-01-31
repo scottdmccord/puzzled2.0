@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
+import Landing from '../Landing/Landing.jsx';
 
 class App extends Component {
   constructor(props){
     super();
-
 
   }
 
   render(){
     return(
       <container>
-        <h1> HELLO WORLD </h1>
+        <Landing />
       </container>
     )
   }
