@@ -5,9 +5,7 @@ class NavBar extends Component {
   render(){
     return(
       <div className="navbar">
-        <ul>
-          <li>About</li>
-        </ul>
+        <div className="navbar-category">About</div>
       </div>
       )
   }

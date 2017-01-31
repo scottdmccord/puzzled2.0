@@ -1,13 +1,20 @@
 .navbar {
-  background-color: white;
+  background-color: yellow;
+  border: solid 2px red;
 }
 
+.navbar-category {
+  font-size: 20px;
+  color: purple;
+  padding: 10px 0px;
+}
+.landing-container {
+  background-color: pink;
+  border: solid red 2px;
+  height: 80vh;
+}
 body {
-  background-color: grey;
-}
-
-li {
-  color: red;
+  margin: 0;
 }
 
 /*# sourceMappingURL=main.css.map*/

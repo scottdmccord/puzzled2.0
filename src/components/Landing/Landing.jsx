@@ -4,12 +4,12 @@ import style from './Landing.css';
 class Landing extends Component {
   render() {
     return(
-      <div className="LandingContainer">
+      <div className="landing-container">
         <h1> Puzzled 2.0 </h1>
 
-        <div className="OptionContainer">
-          <div className="SignUp">Sign Up</div>
-          <div className="LogIn">Log In</div>
+        <div className="option-container">
+          <div className="signup">Sign Up</div>
+          <div className="login">Log In</div>
         </div>
       </div>
       )
