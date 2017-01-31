@@ -13,6 +13,10 @@
   border: solid red 2px;
   height: 80vh;
 }
+.login-container {
+  background-color: #F2A5F7;
+  border: solid 2px red;
+}
 body {
   margin: 0;
 }
