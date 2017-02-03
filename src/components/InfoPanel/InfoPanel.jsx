@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import style from './InfoPanel.css';
 
-class GamePage extends Component {
+class InfoPanel extends Component {
   render(){
     return(
       <div className="infopanel-container">
@@ -10,3 +10,5 @@ class GamePage extends Component {
     )
   }
 }
+
+export default InfoPanel;
