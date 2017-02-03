@@ -24,11 +24,11 @@
 .gamepage-container {
   background-color: #F9AD8D;
   border: solid red 2px;
-  height: 80vh;
+  height: 100vh;
 }
 .board {
-  height: 100px;
-  width: 100px;
+  height: 507px;
+  width: 902px;
   border: solid black 2px;
 }
 body {
