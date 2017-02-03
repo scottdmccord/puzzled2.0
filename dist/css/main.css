@@ -26,6 +26,11 @@
   border: solid red 2px;
   height: 80vh;
 }
+.board {
+  height: 100px;
+  width: 100px;
+  border: solid black 2px;
+}
 body {
   margin: 0;
 }
