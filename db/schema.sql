@@ -1,15 +1,34 @@
 DROP TABLE IF EXISTS puzzles;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE puzzles (
   id SERIAL PRIMARY KEY,
   name VARCHAR NOT NULL,
   url TEXT NOT NULL,
-  highscore1 TEXT DEFAULT 'No high score',
-  highscore1_user DEFAULT 'n/a',
-  highscore2 TEXT DEFAULT 'No high score',
-  highscore2_user DEFAULT 'n/a',
-  highscore3 TEXT DEFAULT 'No high score',
-  highscore3_user DEFAULT 'n/a',
+  highscore_easy1 TEXT DEFAULT 'No high score',
+  highscore_easy1_user DEFAULT 'n/a',
+  highscore_easy2 TEXT DEFAULT 'No high score',
+  highscore_easy2_user DEFAULT 'n/a',
+  highscore_easy3 TEXT DEFAULT 'No high score',
+  highscore_easy3_user DEFAULT 'n/a',
+  highscore_medium1 TEXT DEFAULT 'No high score',
+  highscore_medium1_user DEFAULT 'n/a',
+  highscore_medium2 TEXT DEFAULT 'No high score',
+  highscore_medium2_user DEFAULT 'n/a',
+  highscore_medium3 TEXT DEFAULT 'No high score',
+  highscore_medium3_user DEFAULT 'n/a',
+  highscore_hard1 TEXT DEFAULT 'No high score',
+  highscore_hard1_user DEFAULT 'n/a',
+  highscore_hard2 TEXT DEFAULT 'No high score',
+  highscore_hard2_user DEFAULT 'n/a',
+  highscore_hard3 TEXT DEFAULT 'No high score',
+  highscore_hard3_user DEFAULT 'n/a',
+  highscore_expert1 TEXT DEFAULT 'No high score',
+  highscore_expert1_user DEFAULT 'n/a',
+  highscore_expert2 TEXT DEFAULT 'No high score',
+  highscore_expert2_user DEFAULT 'n/a',
+  highscore_expert3 TEXT DEFAULT 'No high score',
+  highscore_expert3_user DEFAULT 'n/a',
 );
 
 CREATE TABLE users (
