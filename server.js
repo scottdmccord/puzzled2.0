@@ -1,4 +1,5 @@
 'use strict'
+const isDev = !('NODE_ENV' in process.env) && require('dotenv').config() && true;
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -15,6 +16,6 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(bodyParser.json());
 
-app.use('/routes/puzzles', puzzleRouter);
+app.use('/puzzles', puzzleRouter);
 
 app.listen(PORT, () => console.log('Server is here and listening on ', PORT));
