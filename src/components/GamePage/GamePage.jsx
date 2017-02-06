@@ -10,7 +10,7 @@ class GamePage extends Component {
 
     this.state = {
       puzzleName: '',
-      puzzleURL: '',
+      puzzleURL: 'undefined',
       difficulty: '',
       puzzleDimensions: {
         easyHeight: 169,
@@ -21,7 +21,8 @@ class GamePage extends Component {
         hardWidth: 112.75,
         expertHeight: 50.7,
         expertWidth: 56.375
-      }
+      },
+      puzzleGrid: []
     }
 
     this.getPuzzle = this.getPuzzle.bind(this);
@@ -29,13 +30,14 @@ class GamePage extends Component {
     this.setDifficultyMedium = this.setDifficultyMedium.bind(this);
     this.setDifficultyHard = this.setDifficultyHard.bind(this);
     this.setDifficultyExpert = this.setDifficultyExpert.bind(this);
+    this.createBoardEasy = this.createBoardEasy.bind(this);
 
   }
 
   getPuzzle(){
     let board = document.querySelector('.board');
     let selectionModal = document.querySelector('.selection-modal');
-    console.log(board);
+    // console.log(board);
     fetch(`/puzzles`)
       .then(r => r.json())
       .then((data) => {
@@ -44,8 +46,8 @@ class GamePage extends Component {
           puzzleURL: data[0].url
         });
         console.log(this.state);
-        board.style.backgroundImage = this.state.puzzleURL;
         selectionModal.style.display = 'none';
+        this.createBoardEasy();
       })
       .catch(err => console.log(err));
   }
@@ -55,6 +57,13 @@ class GamePage extends Component {
     this.setState({
       difficulty: 'Easy'
     });
+
+    for(var i = 0; i < 2; i++) {
+      this.state.puzzleGrid[i] = [];
+      for(var j = 0; j < 3; j++) {
+        this.state.puzzleGrid[i][j] = { x: (i * -this.state.puzzleDimensions.easyWidth), y: (j * -this.state.puzzleDimensions.easyHeight)};
+      }
+    }
     this.getPuzzle();
   }
 
@@ -80,6 +89,34 @@ class GamePage extends Component {
       difficulty: 'Expert'
     });
     this.getPuzzle();
+  }
+
+  createBoardEasy(){
+    let board = document.querySelector('.board');
+    let counter = 0;
+    let grid = this.state.puzzleGrid;
+    let image = this.state.puzzleURL;
+    let easyHeight = this.state.puzzleDimensions.easyHeight;
+    let easyWidth = this.state.puzzleDimensions.easyWidth;
+
+    console.log("THIS IS THE GRID: ", grid);
+    console.log("THIS IS THE URL: ", image);
+    console.log("THIS IS THE HEIGHT: ", easyHeight);
+    console.log("THIS IS THE WIDTH: ", easyWidth);
+
+    for(let a = 0; a < grid.length; a++) {
+      for(let b = 0; b < grid[a].length; b++) {
+        let block = document.createElement("div");
+        block.className = 'piece';
+        block.id = 'piece' + counter;
+        block.style.backgroundImage = image;
+        block.style.backgroundPositon = grid[a][b].x + 'px ' + grid[a][b].y + 'px';
+        block.style.height = easyHeight + 'px';
+        block.style.width = easyWidth + 'px';
+        board.appendChild(block);
+        counter++;
+      }
+    }
   }
 
 
