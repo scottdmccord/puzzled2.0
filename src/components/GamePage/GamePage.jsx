@@ -11,9 +11,24 @@ class GamePage extends Component {
     this.state = {
       puzzleName: '',
       puzzleURL: '',
+      difficulty: '',
+      puzzleDimensions: {
+        easyHeight: 169,
+        easyWidth: 451,
+        mediumHeight: 84.5,
+        mediumWidth: 225.5,
+        hardHeight: 84.5,
+        hardWidth: 112.75,
+        expertHeight: 50.7,
+        expertWidth: 56.375
+      }
     }
 
     this.getPuzzle = this.getPuzzle.bind(this);
+    this.setDifficultyEasy = this.setDifficultyEasy.bind(this);
+    this.setDifficultyMedium = this.setDifficultyMedium.bind(this);
+    this.setDifficultyHard = this.setDifficultyHard.bind(this);
+    this.setDifficultyExpert = this.setDifficultyExpert.bind(this);
 
   }
 
@@ -35,6 +50,39 @@ class GamePage extends Component {
       .catch(err => console.log(err));
   }
 
+  setDifficultyEasy(){
+    console.log("setting difficulty to easy");
+    this.setState({
+      difficulty: 'Easy'
+    });
+    this.getPuzzle();
+  }
+
+  setDifficultyMedium(){
+    console.log("setting difficulty to medium");
+    this.setState({
+      difficulty: 'Medium'
+    });
+    this.getPuzzle();
+  }
+
+  setDifficultyHard(){
+    console.log("setting difficulty to hard");
+    this.setState({
+      difficulty: 'Hard'
+    });
+    this.getPuzzle();
+  }
+
+  setDifficultyExpert(){
+    console.log("setting difficulty to expert");
+    this.setState({
+      difficulty: 'Expert'
+    });
+    this.getPuzzle();
+  }
+
+
   render(){
     return(
       <div className="gamepage-container">
@@ -46,11 +94,10 @@ class GamePage extends Component {
       </div>
 
       <div className="selection-modal">
-        <button>Easy</button>
-        <button>Medium</button>
-        <button>Hard</button>
-        <button>Expert</button>
-        <button onClick={this.getPuzzle}>Start</button>
+        <button onClick={this.setDifficultyEasy}>Easy</button>
+        <button onClick={this.setDifficultyMedium}>Medium</button>
+        <button onClick={this.setDifficultyHard}>Hard</button>
+        <button onClick={this.setDifficultyExpert}>Expert</button>
       </div>
 
       </div>
