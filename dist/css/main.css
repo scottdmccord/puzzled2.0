@@ -38,9 +38,14 @@
   background-color: yellow;
 }
 .board {
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: flex;
   height: 507px;
   width: 902px;
-  border: solid black 2px;
+  flex-wrap: wrap;
+  flex-direction: column;
+  /*border: solid black 2px;*/
 }
 body {
   margin: 0;
