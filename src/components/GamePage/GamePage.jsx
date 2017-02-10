@@ -31,6 +31,7 @@ class GamePage extends Component {
     this.setDifficultyHard = this.setDifficultyHard.bind(this);
     this.setDifficultyExpert = this.setDifficultyExpert.bind(this);
     this.generatePiecesEasy = this.generatePiecesEasy.bind(this);
+    this.scramblePuzzle = this.scramblePuzzle.bind(this);
 
   }
 
@@ -73,11 +74,6 @@ class GamePage extends Component {
     let easyHeight = this.state.puzzleDimensions.easyHeight;
     let easyWidth = this.state.puzzleDimensions.easyWidth;
 
-    console.log("THIS IS THE GRID: ", grid);
-    console.log("THIS IS THE URL: ", image);
-    console.log("THIS IS THE HEIGHT: ", easyHeight);
-    console.log("THIS IS THE WIDTH: ", easyWidth);
-
     for(let a = 0; a < grid.length; a++) {
       for(let b = 0; b < grid[a].length; b++) {
         let block = document.createElement("div");
@@ -91,6 +87,13 @@ class GamePage extends Component {
         counter++;
       }
     }
+  }
+
+  //
+
+  scramblePuzzle() {
+    console.log("SCRAMBLING!");
+    console.log(this.state);
   }
 
   setDifficultyMedium(){
@@ -126,7 +129,9 @@ class GamePage extends Component {
       <div className="gamepage-view">
         <h1> Game Page </h1>
         <InfoPanel />
-        <Board />
+        <Board
+          scramblePuzzle={this.scramblePuzzle}
+        />
       </div>
 
       <div className="selection-modal">
