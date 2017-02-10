@@ -22,7 +22,15 @@ class GamePage extends Component {
         expertHeight: 50.7,
         expertWidth: 56.375
       },
-      puzzleGrid: []
+      puzzleGrid: [],
+      shuffled: false,
+      turn: 0,
+      divA: null,
+      divB: null,
+      divAID: null,
+      divBID: null,
+      holder: null,
+      holderID: null
     }
 
     this.loadPuzzleEasy = this.loadPuzzleEasy.bind(this);
@@ -31,7 +39,10 @@ class GamePage extends Component {
     this.setDifficultyHard = this.setDifficultyHard.bind(this);
     this.setDifficultyExpert = this.setDifficultyExpert.bind(this);
     this.generatePiecesEasy = this.generatePiecesEasy.bind(this);
+    this.shuffleArray = this.shuffleArray.bind(this);
     this.scramblePuzzle = this.scramblePuzzle.bind(this);
+    this.swapTiles = this.swapTiles.bind(this);
+
 
   }
 
@@ -89,11 +100,71 @@ class GamePage extends Component {
     }
   }
 
-  //
+  // references stack overflow: http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+  shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+    return array;
+  }
 
   scramblePuzzle() {
-    console.log("SCRAMBLING!");
-    console.log(this.state);
+    if(!this.state.shuffled) {
+      this.setState({ shuffled: true });
+      let board = document.querySelector('.board');
+      board.addEventListener('click', this.swapTiles);
+      let puzzlePieces = document.querySelectorAll('.piece');
+      for(let i = 0; i < puzzlePieces.length; i++) {
+        puzzlePieces.className = 'clickPiece';
+        let target = Math.floor(Math.random() * puzzlePieces.length - 1) + 1;
+        let target2 = Math.floor(Math.random() * puzzlePieces.length - 1) + 1;
+        board.insertBefore(puzzlePieces[target], puzzlePieces[target2]);
+      }
+    }
+  }
+
+
+  swapTiles(event) {
+    let piece = document.querySelectorAll('.piece');
+    let turn = this.state.turn;
+    let divA = this.state.divA;
+    let divB = this.state.divB;
+    let holder = this.state.holder;
+    let divAID = this.state.divAID;
+    let divBID = this.state.divBID;
+    let holderID = this.state.holderID;
+
+    if(turn === 0) {
+      console.log('turn 0');
+      this.setState({
+        divA: event.target.style.backgroundPosition,
+        divAID: event.target.id
+      })
+      this.setState({ turn: 1 })
+      console.log(turn);
+    } else {
+      console.log('turn 1');
+      let divBBP = event.target.style.backgroundPosition;
+      this.setState({
+        divB: divBBP,
+        divBID: event.target.id,
+        holder: event.target.style.backgroundPosition,
+        holderID: event.target.id,
+       })
+      console.log("before change divA: ", divA);
+      console.log("before change divB: ", divB);
+      console.log('holder', holder);
+      divA = divB;
+      console.log("after change divA: ", divA);
+      divB = holder;
+      console.log("after change divB: ", divB);
+      divBID = divAID;
+      divAID = holderID;
+      this.setState({ turn: 0 });
+    }
   }
 
   setDifficultyMedium(){
@@ -119,8 +190,6 @@ class GamePage extends Component {
     });
     this.loadPuzzleEasy();
   }
-
-
 
   render(){
     return(
