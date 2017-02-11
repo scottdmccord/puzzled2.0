@@ -18,5 +18,6 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(bodyParser.json());
 
 app.use('/puzzles', puzzleRouter);
+app.use('/users', userRouter);
 
 app.listen(PORT, () => console.log('Server is here and listening on ', PORT));

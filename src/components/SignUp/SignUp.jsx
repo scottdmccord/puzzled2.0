@@ -14,26 +14,50 @@ class SignUp extends Component {
     this.updateUsername = this.updateUsername.bind(this);
     this.updatePassword = this.updatePassword.bind(this);
     this.updateEmail = this.updateEmail.bind(this);
+    this.createUser = this.createUser.bind(this);
 
   }
 
-    updateUsername(e) {
-      this.setState({
-        username: e.target.value
-      });
-    };
+  updateUsername(e) {
+    this.setState({
+      username: e.target.value
+    });
+  };
 
-    updatePassword(e) {
-      this.setState({
-        password: e.target.value
-      });
-    };
+  updatePassword(e) {
+    this.setState({
+      password: e.target.value
+    });
+  };
 
-    updateEmail(e) {
+  updateEmail(e) {
+    this.setState({
+      email: e.target.value
+    });
+  };
+
+  createUser() {
+    console.log('starting fetch');
+    fetch('/users', {
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password,
+        email: this.state.email
+      })
+    })
+    .then(() => {
       this.setState({
-        email: e.target.value
-      });
-    };
+        username: '',
+        password: '',
+        email: ''
+      })
+    })
+    .catch(error => console.log(error));
+  }
 
   render(){
     return(
@@ -61,7 +85,7 @@ class SignUp extends Component {
             value={this.state.email}
             onChange={this.updateEmail}
           />
-          <button> Sign Up </button>
+          <button onClick={this.createUser}> Sign Up </button>
         </form>
       </div>
     )
