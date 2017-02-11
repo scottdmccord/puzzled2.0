@@ -41,6 +41,7 @@ class GamePage extends Component {
       win: true,
     }
 
+    this.baseState = this.state;
     this.loadPuzzle = this.loadPuzzle.bind(this);
     this.createPuzzle = this.createPuzzle.bind(this);
     this.generatePieces = this.generatePieces.bind(this);
@@ -50,6 +51,7 @@ class GamePage extends Component {
     this.swapTiles = this.swapTiles.bind(this);
     this.checkWin = this.checkWin.bind(this);
     this.moveTileFunctions = this.moveTileFunctions.bind(this);
+    this.newPuzzle = this.newPuzzle.bind(this);
 
   }
 
@@ -209,6 +211,16 @@ class GamePage extends Component {
     }
   }
 
+  newPuzzle() {
+    console.log('new puzzle!');
+    let selectionModal = document.querySelector('.selection-modal');
+    selectionModal.style.display = 'block';
+    this.setState(this.baseState);
+    this.setState({ puzzleGrid: [] });
+    let board = document.querySelector('.board');
+    board.innerHTML = '';
+  }
+
   render(){
     return(
       <div className="gamepage-container">
@@ -218,6 +230,7 @@ class GamePage extends Component {
         <InfoPanel />
         <Board
           scramblePuzzle={this.scramblePuzzle}
+          newPuzzle={this.newPuzzle}
         />
       </div>
 

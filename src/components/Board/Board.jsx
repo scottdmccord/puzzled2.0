@@ -11,7 +11,7 @@ class Board extends Component {
         <div className="board"></div>
         <div className="board-button-container">
           <button className="start button" onClick={this.props.scramblePuzzle}>START</button>
-          <button className="new-puzzle button">NEW PUZZLE</button>
+          <button className="new-puzzle button" onClick={this.props.newPuzzle}>NEW PUZZLE</button>
         </div>
       </div>
     )
