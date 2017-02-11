@@ -10,6 +10,7 @@ class GamePage extends Component {
 
     this.state = {
       puzzleName: '',
+      puzzleNumber: '',
       puzzleURL: 'undefined',
       difficulty: '',
       puzzleDimensions: {
@@ -78,9 +79,11 @@ class GamePage extends Component {
     fetch(`/puzzles`)
       .then(r => r.json())
       .then((data) => {
+        let randomNumber = Math.floor(Math.random() * (data.length + 1));
         this.setState({
-          puzzleName: data[0].name,
-          puzzleURL: data[0].url
+          puzzleNumber: randomNumber,
+          puzzleName: data[randomNumber].name,
+          puzzleURL: data[randomNumber].url
         });
         selectionModal.style.display = 'none';
         this.generatePieces();
