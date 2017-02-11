@@ -13,12 +13,20 @@ class GamePage extends Component {
       puzzleURL: 'undefined',
       difficulty: '',
       puzzleDimensions: {
+        easyXAxis: 2,
+        easyYAxis: 3,
         easyHeight: 169,
         easyWidth: 451,
+        mediumXAxis: 4,
+        mediumYAxis: 6,
         mediumHeight: 84.5,
         mediumWidth: 225.5,
+        hardXAxis: 8,
+        hardYAxis: 6,
         hardHeight: 84.5,
         hardWidth: 112.75,
+        expertXAxis: 16,
+        expertYAxis: 10,
         expertHeight: 50.7,
         expertWidth: 56.375
       },
@@ -32,12 +40,9 @@ class GamePage extends Component {
       win: true,
     }
 
-    this.loadPuzzleEasy = this.loadPuzzleEasy.bind(this);
-    this.createPuzzleEasy = this.createPuzzleEasy.bind(this);
-    this.setDifficultyMedium = this.setDifficultyMedium.bind(this);
-    this.setDifficultyHard = this.setDifficultyHard.bind(this);
-    this.setDifficultyExpert = this.setDifficultyExpert.bind(this);
-    this.generatePiecesEasy = this.generatePiecesEasy.bind(this);
+    this.loadPuzzle = this.loadPuzzle.bind(this);
+    this.createPuzzle = this.createPuzzle.bind(this);
+    this.generatePieces = this.generatePieces.bind(this);
     this.shuffleArray = this.shuffleArray.bind(this);
     this.scramblePuzzle = this.scramblePuzzle.bind(this);
     this.assignTiles = this.assignTiles.bind(this);
@@ -49,19 +54,25 @@ class GamePage extends Component {
 
   // Set the puzzle's state to easy, define the grid of puzzle pieces
   // and load the puzzle from the database.
-  createPuzzleEasy(){
-    this.setState({ difficulty: 'Easy' });
-    for(var i = 0; i < 2; i++) {
+  createPuzzle(event){
+    let difficultySelected = event.target.innerHTML;
+    this.setState({ difficulty: difficultySelected });
+    let lowercaseDifficulty = difficultySelected.toLowerCase();
+    let width = 'this.state.puzzleDimensions.' + lowercaseDifficulty + 'Width';
+    let height = 'this.state.puzzleDimensions.' + lowercaseDifficulty + 'Height';
+    let xAxis = eval('this.state.puzzleDimensions.' + lowercaseDifficulty + 'XAxis');
+    let yAxis = eval('this.state.puzzleDimensions.' + lowercaseDifficulty + 'YAxis');
+    for(var i = 0; i < xAxis; i++) {
       this.state.puzzleGrid[i] = [];
-      for(var j = 0; j < 3; j++) {
-        this.state.puzzleGrid[i][j] = { x: (i * -this.state.puzzleDimensions.easyWidth), y: (j * -this.state.puzzleDimensions.easyHeight)};
+      for(var j = 0; j < yAxis; j++) {
+        this.state.puzzleGrid[i][j] = { x: (i * -eval(width)), y: (j * -eval(height))};
       }
     }
-    this.loadPuzzleEasy();
+    this.loadPuzzle();
   };
 
   // Fetches the puzzle from the psql database and saves the information in state.
-  loadPuzzleEasy(){
+  loadPuzzle(){
     let board = document.querySelector('.board');
     let selectionModal = document.querySelector('.selection-modal');
     fetch(`/puzzles`)
@@ -72,19 +83,21 @@ class GamePage extends Component {
           puzzleURL: data[0].url
         });
         selectionModal.style.display = 'none';
-        this.generatePiecesEasy();
+        this.generatePieces();
       })
       .catch(err => console.log(err));
   }
 
   // Separates the puzzle image into 6 separate divs.
-  generatePiecesEasy(){
+  generatePieces(){
     let board = document.querySelector('.board');
     let counter = 0;
     let grid = this.state.puzzleGrid;
     let image = this.state.puzzleURL;
-    let easyHeight = this.state.puzzleDimensions.easyHeight;
-    let easyWidth = this.state.puzzleDimensions.easyWidth;
+    let difficultySelected = this.state.difficulty;
+    let lowercaseDifficulty = difficultySelected.toLowerCase();
+    let width = eval('this.state.puzzleDimensions.' + lowercaseDifficulty + 'Width');
+    let height = eval('this.state.puzzleDimensions.' + lowercaseDifficulty + 'Height');
 
     for(let a = 0; a < grid.length; a++) {
       for(let b = 0; b < grid[a].length; b++) {
@@ -93,8 +106,8 @@ class GamePage extends Component {
         block.id = 'piece' + counter;
         block.style.backgroundImage = image;
         block.style.backgroundPosition = grid[a][b].x + 'px ' + grid[a][b].y + 'px';
-        block.style.height = easyHeight + 'px';
-        block.style.width = easyWidth + 'px';
+        block.style.height = height + 'px';
+        block.style.width = width + 'px';
         board.appendChild(block);
         counter++;
       }
@@ -193,30 +206,6 @@ class GamePage extends Component {
     }
   }
 
-  setDifficultyMedium(){
-    console.log("setting difficulty to medium");
-    this.setState({
-      difficulty: 'Medium'
-    });
-    this.loadPuzzleEasy();
-  }
-
-  setDifficultyHard(){
-    console.log("setting difficulty to hard");
-    this.setState({
-      difficulty: 'Hard'
-    });
-    this.loadPuzzleEasy();
-  }
-
-  setDifficultyExpert(){
-    console.log("setting difficulty to expert");
-    this.setState({
-      difficulty: 'Expert'
-    });
-    this.loadPuzzleEasy();
-  }
-
   render(){
     return(
       <div className="gamepage-container">
@@ -230,10 +219,10 @@ class GamePage extends Component {
       </div>
 
       <div className="selection-modal">
-        <button onClick={this.createPuzzleEasy}>Easy</button>
-        <button onClick={this.setDifficultyMedium}>Medium</button>
-        <button onClick={this.setDifficultyHard}>Hard</button>
-        <button onClick={this.setDifficultyExpert}>Expert</button>
+        <button onClick={this.createPuzzle}>Easy</button>
+        <button onClick={this.createPuzzle}>Medium</button>
+        <button onClick={this.createPuzzle}>Hard</button>
+        <button onClick={this.createPuzzle}>Expert</button>
       </div>
 
       </div>
