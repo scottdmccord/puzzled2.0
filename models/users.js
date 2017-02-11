@@ -7,3 +7,7 @@ function createUser(req, res, next) {
   .then(next())
   .catch(error => next(error));
 }
+
+module.exports = {
+  createUser
+};
