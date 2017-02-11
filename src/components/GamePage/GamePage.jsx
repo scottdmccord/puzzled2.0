@@ -27,9 +27,9 @@ class GamePage extends Component {
       turn: 0,
       divA: null,
       divB: null,
+      holder: null,
       divAID: null,
       divBID: null,
-      holder: null,
       holderID: null
     }
 
@@ -41,8 +41,8 @@ class GamePage extends Component {
     this.generatePiecesEasy = this.generatePiecesEasy.bind(this);
     this.shuffleArray = this.shuffleArray.bind(this);
     this.scramblePuzzle = this.scramblePuzzle.bind(this);
+    this.assignTiles = this.assignTiles.bind(this);
     this.swapTiles = this.swapTiles.bind(this);
-
 
   }
 
@@ -115,7 +115,10 @@ class GamePage extends Component {
     if(!this.state.shuffled) {
       this.setState({ shuffled: true });
       let board = document.querySelector('.board');
-      board.addEventListener('click', this.swapTiles);
+      board.addEventListener('click', () => {
+        this.assignTiles(event);
+        this.swapTiles();
+      });
       let puzzlePieces = document.querySelectorAll('.piece');
       for(let i = 0; i < puzzlePieces.length; i++) {
         puzzlePieces.className = 'clickPiece';
@@ -126,8 +129,40 @@ class GamePage extends Component {
     }
   }
 
+  // assignTiles(event) {
+  //   let piece = document.querySelectorAll('.piece');
 
-  swapTiles(event) {
+  //   if(this.state.turn === 0) {
+  //     this.setState({
+  //       divA: event.target.style.backgroundPosition,
+  //       divAID: event.target.id,
+  //       turn: 1
+  //     })
+  //   } else {
+  //     this.setState({
+  //       divB: event.target.style.backgroundPosition,
+  //       divBID: event.target.id,
+  //       turn: 0
+  //     })
+  //   }
+  // }
+
+  swapTiles() {
+    if(this.state.turn === 2) {
+      let divA = document.getElementById(this.state.divAID);
+      let divB = document.getElementById(this.state.divBID);
+      divA.style.backgroundPosition = this.state.divB;
+      divB.style.backgroundPosition = this.state.divA;
+      divA.id = this.state.divBID;
+      divB.id = this.state.divAID;
+      this.setState({ turn: 0 });
+    } else {
+      console.log("no swap");
+    }
+  }
+
+
+  assignTiles(event) {
     let piece = document.querySelectorAll('.piece');
     let turn = this.state.turn;
     let divA = this.state.divA;
@@ -154,18 +189,19 @@ class GamePage extends Component {
         holder: event.target.style.backgroundPosition,
         holderID: event.target.id,
        })
-      console.log("before change divA: ", divA);
-      console.log("before change divB: ", divB);
-      console.log('holder', holder);
-      divA = divB;
-      console.log("after change divA: ", divA);
-      divB = holder;
-      console.log("after change divB: ", divB);
-      divBID = divAID;
-      divAID = holderID;
-      this.setState({ turn: 0 });
+      // console.log("before change divA: ", divA);
+      // console.log("before change divB: ", divB);
+      // console.log('holder', holder);
+      // divA = divB;
+      // console.log("after change divA: ", divA);
+      // divB = holder;
+      // console.log("after change divB: ", divB);
+      // divBID = divAID;
+      // divAID = holderID;
+      this.setState({ turn: 2 });
     }
   }
+
 
   setDifficultyMedium(){
     console.log("setting difficulty to medium");
