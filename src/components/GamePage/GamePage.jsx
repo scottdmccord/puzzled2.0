@@ -129,48 +129,12 @@ class GamePage extends Component {
     }
   }
 
-  // assignTiles(event) {
-  //   let piece = document.querySelectorAll('.piece');
-
-  //   if(this.state.turn === 0) {
-  //     this.setState({
-  //       divA: event.target.style.backgroundPosition,
-  //       divAID: event.target.id,
-  //       turn: 1
-  //     })
-  //   } else {
-  //     this.setState({
-  //       divB: event.target.style.backgroundPosition,
-  //       divBID: event.target.id,
-  //       turn: 0
-  //     })
-  //   }
-  // }
-
-  swapTiles() {
-    if(this.state.turn === 2) {
-      let divA = document.getElementById(this.state.divAID);
-      let divB = document.getElementById(this.state.divBID);
-      divA.style.backgroundPosition = this.state.divB;
-      divB.style.backgroundPosition = this.state.divA;
-      divA.id = this.state.divBID;
-      divB.id = this.state.divAID;
-      this.setState({ turn: 0 });
-    } else {
-      console.log("no swap");
-    }
-  }
-
-
   assignTiles(event) {
-    let piece = document.querySelectorAll('.piece');
     let turn = this.state.turn;
     let divA = this.state.divA;
     let divB = this.state.divB;
-    let holder = this.state.holder;
     let divAID = this.state.divAID;
     let divBID = this.state.divBID;
-    let holderID = this.state.holderID;
 
     if(turn === 0) {
       console.log('turn 0');
@@ -185,23 +149,25 @@ class GamePage extends Component {
       let divBBP = event.target.style.backgroundPosition;
       this.setState({
         divB: divBBP,
-        divBID: event.target.id,
-        holder: event.target.style.backgroundPosition,
-        holderID: event.target.id,
+        divBID: event.target.id
        })
-      // console.log("before change divA: ", divA);
-      // console.log("before change divB: ", divB);
-      // console.log('holder', holder);
-      // divA = divB;
-      // console.log("after change divA: ", divA);
-      // divB = holder;
-      // console.log("after change divB: ", divB);
-      // divBID = divAID;
-      // divAID = holderID;
       this.setState({ turn: 2 });
     }
   }
 
+  swapTiles() {
+    if(this.state.turn === 2) {
+      let divA = document.getElementById(this.state.divAID);
+      let divB = document.getElementById(this.state.divBID);
+      divA.style.backgroundPosition = this.state.divB;
+      divB.style.backgroundPosition = this.state.divA;
+      divA.id = this.state.divBID;
+      divB.id = this.state.divAID;
+      this.setState({ turn: 0 });
+    } else {
+      console.log("no swap");
+    }
+  }
 
   setDifficultyMedium(){
     console.log("setting difficulty to medium");
