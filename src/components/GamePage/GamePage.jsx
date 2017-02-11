@@ -27,10 +27,9 @@ class GamePage extends Component {
       turn: 0,
       divA: null,
       divB: null,
-      holder: null,
       divAID: null,
       divBID: null,
-      holderID: null
+      win: true,
     }
 
     this.loadPuzzleEasy = this.loadPuzzleEasy.bind(this);
@@ -43,6 +42,8 @@ class GamePage extends Component {
     this.scramblePuzzle = this.scramblePuzzle.bind(this);
     this.assignTiles = this.assignTiles.bind(this);
     this.swapTiles = this.swapTiles.bind(this);
+    this.checkWin = this.checkWin.bind(this);
+    this.moveTileFunctions = this.moveTileFunctions.bind(this);
 
   }
 
@@ -111,14 +112,18 @@ class GamePage extends Component {
     return array;
   }
 
+  moveTileFunctions() {
+    this.assignTiles(event);
+    this.swapTiles();
+    this.checkWin();
+  }
+
+
   scramblePuzzle() {
     if(!this.state.shuffled) {
       this.setState({ shuffled: true });
       let board = document.querySelector('.board');
-      board.addEventListener('click', () => {
-        this.assignTiles(event);
-        this.swapTiles();
-      });
+      board.addEventListener('click', this.moveTileFunctions);
       let puzzlePieces = document.querySelectorAll('.piece');
       for(let i = 0; i < puzzlePieces.length; i++) {
         puzzlePieces.className = 'clickPiece';
@@ -166,6 +171,25 @@ class GamePage extends Component {
       this.setState({ turn: 0 });
     } else {
       console.log("no swap");
+    }
+  }
+
+  checkWin() {
+    let pieces = document.querySelectorAll('.piece');
+    this.setState({win: true});
+    for(let i = 0; i < pieces.length; i++) {
+      if(pieces[i].id != ('piece' + i)) {
+        this.setState({win: false});
+        console.log("No win");
+      }
+    }
+    if(this.state.win === true) {
+      console.log("win");
+      setTimeout(() => {
+        alert('You win! Click "New Puzzle" to try again.');
+      }, 250);
+      let board = document.querySelector('.board');
+      board.removeEventListener('click', this.moveTileFunctions);
     }
   }
 
