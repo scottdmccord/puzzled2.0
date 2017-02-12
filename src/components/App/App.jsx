@@ -10,6 +10,22 @@ class App extends Component {
   constructor(props){
     super();
 
+    this.state = {
+      currentToken: '',
+      userID: ''
+    }
+  }
+
+  updateCurrentToken(newToken) {
+    this.setState({
+      currentToken: newToken
+    });
+  }
+
+  updateUserID(userID) {
+    this.setState({
+      userID: userID
+    });
   }
 
   render(){
@@ -17,7 +33,10 @@ class App extends Component {
       <container>
         <NavBar />
         <Landing />
-        <LogIn />
+        <LogIn
+          updateCurrentToken={this.updateCurrentToken.bind(this)}
+          updateUserID={this.updateUserID.bind(this)}
+        />
         <SignUp />
         <GamePage />
       </container>
