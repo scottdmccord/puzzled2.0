@@ -29,6 +29,7 @@ class App extends Component {
   render(){
     return(
       <container>
+        <NavBar />
         <h1> TEST REACT ROUTER </h1>
         {this.props.children && React.cloneElement(this.props.children, {
           state: this.state,
