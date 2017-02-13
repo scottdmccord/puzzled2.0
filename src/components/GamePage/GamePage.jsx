@@ -39,7 +39,7 @@ class GamePage extends Component {
       divB: null,
       divAID: null,
       divBID: null,
-      win: true,
+      win: true
     }
 
     this.baseState = this.state;
@@ -228,6 +228,7 @@ class GamePage extends Component {
 
       <div className="gamepage-view">
         <h1> Game Page </h1>
+        <h2> Welcome, {this.props.username}!</h2>
         <InfoPanel />
         <Board
           scramblePuzzle={this.scramblePuzzle}

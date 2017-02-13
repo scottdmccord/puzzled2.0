@@ -39,7 +39,6 @@ class LogIn extends Component {
   userLogin(e) {
     e.preventDefault();
     console.log("posting the login!");
-    console.log(this);
     fetch('/users/login', {
       method: 'POST',
       headers: {
@@ -54,6 +53,7 @@ class LogIn extends Component {
     .then((data) => {
       this.props.updateCurrentToken(data.token);
       this.props.updateUserID(data.id);
+      this.props.updateUsername(data.username);
       this.setState({
         userLogin: {
           username: '',

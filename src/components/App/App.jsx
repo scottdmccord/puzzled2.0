@@ -10,7 +10,8 @@ class App extends Component {
 
     this.state = {
       currentToken: '',
-      userID: ''
+      userID: '',
+      username: ''
     }
   }
 
@@ -26,6 +27,12 @@ class App extends Component {
     });
   }
 
+  updateUsername(username) {
+    this.setState({
+      username: username
+    });
+  }
+
   render(){
     return(
       <container>
@@ -34,7 +41,9 @@ class App extends Component {
         {this.props.children && React.cloneElement(this.props.children, {
           state: this.state,
           updateCurrentToken: this.updateCurrentToken.bind(this),
-          updateUserID: this.updateUserID.bind(this)
+          updateUserID: this.updateUserID.bind(this),
+          updateUsername: this.updateUsername.bind(this),
+          username: this.state.username
         })}
       </container>
     )

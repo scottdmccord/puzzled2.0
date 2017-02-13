@@ -19,8 +19,9 @@ function authenticateUser(req, res, next) {
       const match = bcrypt.compareSync(req.body.password, data.password);
       if (match) {
         const userID = data.id;
+        const username = data.username;
         const myToken = jwt.sign({ username: req.body.username }, process.env.SECRET);
-        res.status(200).json({ token: myToken, id: userID });
+        res.status(200).json({ token: myToken, id: userID, username: username });
         console.log('successful sign in');
       } else {
         res.status(500).send('wrong password');

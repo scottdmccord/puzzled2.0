@@ -10,7 +10,8 @@ class NavBar extends Component {
         <div className="navbar-category">About</div>
         <div className="navbar-category"><Link to="/login">Log In</Link></div>
         <div className="navbar-category"><Link to="/signup">Sign Up</Link></div>
-        <div className="navbar-category"><Link to ="/gamepage">Play</Link></div>
+        <div className="navbar-category"><Link to="/gamepage">Play</Link></div>
+        <div className="navbar-category"><Link to="/">Log Out</Link></div>
       </div>
     )
   }
