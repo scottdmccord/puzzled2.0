@@ -20,4 +20,8 @@ app.use(bodyParser.json());
 app.use('/puzzles', puzzleRouter);
 app.use('/users', userRouter);
 
+app.get('*', function (request, response){
+  response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
+})
+
 app.listen(PORT, () => console.log('Server is here and listening on ', PORT));
