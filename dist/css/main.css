@@ -13,6 +13,9 @@
   border: solid red 2px;
   height: 80vh;
 }
+body {
+  margin: 0;
+}
 .login-container {
   background-color: #F2A5F7;
   border: solid 2px red;
@@ -46,9 +49,6 @@
   flex-wrap: wrap;
   flex-direction: column;
   /*border: solid black 2px;*/
-}
-body {
-  margin: 0;
 }
 
 /*# sourceMappingURL=main.css.map*/

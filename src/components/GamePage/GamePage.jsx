@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import style from './GamePage.css';
 import InfoPanel from '../InfoPanel/InfoPanel.jsx';
 import Board from '../Board/Board.jsx';

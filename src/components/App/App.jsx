@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import NavBar from '../NavBar/NavBar.jsx';
 import Landing from '../Landing/Landing.jsx';
-import LogIn from '../LogIn/LogIn.jsx';
-import SignUp from '../SignUp/SignUp.jsx';
-import GamePage from '../GamePage/GamePage.jsx';
 import style from './App.css';
 
 class App extends Component {
@@ -31,14 +29,12 @@ class App extends Component {
   render(){
     return(
       <container>
-        <NavBar />
-        <Landing />
-        <LogIn
-          updateCurrentToken={this.updateCurrentToken.bind(this)}
-          updateUserID={this.updateUserID.bind(this)}
-        />
-        <SignUp />
-        <GamePage />
+        <h1> TEST REACT ROUTER </h1>
+        {this.props.children && React.cloneElement(this.props.children, {
+          state: this.state,
+          updateCurrentToken: this.updateCurrentToken.bind(this),
+          updateUserID: this.updateUserID.bind(this)
+        })}
       </container>
     )
   }

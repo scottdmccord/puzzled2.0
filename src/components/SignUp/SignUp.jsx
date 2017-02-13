@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import Style from './SignUp.css';
 
 class SignUp extends Component {
