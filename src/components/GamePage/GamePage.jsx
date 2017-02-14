@@ -33,7 +33,6 @@ class GamePage extends Component {
         expertWidth: 56.375
       },
       timer: null,
-      millisecondsONES: 0,
       millisecondsTENS: 0,
       millisecondsHUNDREDS: 0,
       secondsONES: 0,
@@ -97,12 +96,22 @@ class GamePage extends Component {
       .then((data) => {
         let randomNumber = Math.floor(Math.random() * (data.length + 1));
         let highscore1 = eval('data[randomNumber].highscore_' + difficulty + '1');
+        let highscore2 = eval('data[randomNumber].highscore_' + difficulty + '2');
+        let highscore3 = eval('data[randomNumber].highscore_' + difficulty + '3');
+        let highscore1user = eval('data[randomNumber].highscore_' + difficulty + '1' + '_user');
+        let highscore2user = eval('data[randomNumber].highscore_' + difficulty + '2' + '_user');
+        let highscore3user = eval('data[randomNumber].highscore_' + difficulty + '3' + '_user');
         // let highscore1 = data[randomNumber].highscore_easy1;
         this.setState({
           puzzleNumber: randomNumber,
           puzzleName: data[randomNumber].name,
           puzzleURL: data[randomNumber].url,
-          highscore1: highscore1
+          highscore1: highscore1,
+          highscore2: highscore2,
+          highscore3: highscore3,
+          highscore1_user: highscore1user,
+          highscore2_user: highscore2user,
+          highscore3_user: highscore3user
         });
         console.log(this.state.highscore1);
         selectionModal.style.display = 'none';
