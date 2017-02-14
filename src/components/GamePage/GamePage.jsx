@@ -32,6 +32,17 @@ class GamePage extends Component {
         expertHeight: 50.7,
         expertWidth: 56.375
       },
+      secondONES: 0,
+      timer: {
+        milisecondsONES: 0,
+        milisecondsTENS: 0,
+        secondsONES: 0,
+        secondsTENS: 0,
+        minutesONES: 0,
+        minutesTENS: 0,
+        hoursONES: 0,
+        hoursTENS: 0
+      },
       puzzleGrid: [],
       shuffled: false,
       turn: 0,
@@ -53,6 +64,8 @@ class GamePage extends Component {
     this.checkWin = this.checkWin.bind(this);
     this.moveTileFunctions = this.moveTileFunctions.bind(this);
     this.newPuzzle = this.newPuzzle.bind(this);
+    this.startTImer = this.startTimer.bind(this);
+    this.tickTimer = this.tickTimer.bind(this);
 
   }
 
@@ -151,6 +164,7 @@ class GamePage extends Component {
         board.insertBefore(puzzlePieces[target], puzzlePieces[target2]);
       }
     }
+    this.startTimer();
   }
 
   assignTiles(event) {
@@ -222,6 +236,17 @@ class GamePage extends Component {
     board.innerHTML = '';
   }
 
+  startTimer() {
+    console.log('starting timer');
+    let timer = setInterval(this.tickTimer, 1000)
+  }
+
+  tickTimer() {
+    console.log('counting');
+    this.setState({secondOnes: this.state.secondONES ++})
+    console.log(this.state.secondONES);
+  }
+
   render(){
     return(
       <div className="gamepage-container">
@@ -229,7 +254,10 @@ class GamePage extends Component {
       <div className="gamepage-view">
         <h1> Game Page </h1>
         <h2> Welcome, {this.props.username}!</h2>
-        <InfoPanel />
+        <InfoPanel
+          timer={this.state.timer}
+          secondONES={this.state.secondONES}
+        />
         <Board
           scramblePuzzle={this.scramblePuzzle}
           newPuzzle={this.newPuzzle}
