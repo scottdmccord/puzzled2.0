@@ -64,6 +64,7 @@ class GamePage extends Component {
     this.newPuzzle = this.newPuzzle.bind(this);
     this.startTImer = this.startTimer.bind(this);
     this.tickTimer = this.tickTimer.bind(this);
+    this.assignScores = this.assignScores.bind(this);
 
   }
 
@@ -101,6 +102,9 @@ class GamePage extends Component {
         let highscore1user = eval('data[randomNumber].highscore_' + difficulty + '1' + '_user');
         let highscore2user = eval('data[randomNumber].highscore_' + difficulty + '2' + '_user');
         let highscore3user = eval('data[randomNumber].highscore_' + difficulty + '3' + '_user');
+        let highscore1score = eval('data[randomNumber].highscore_' + difficulty + '3' + '_score');
+        let highscore2score = eval('data[randomNumber].highscore_' + difficulty + '3' + '_score');
+        let highscore3score = eval('data[randomNumber].highscore_' + difficulty + '3' + '_score');
         // let highscore1 = data[randomNumber].highscore_easy1;
         this.setState({
           puzzleNumber: randomNumber,
@@ -111,7 +115,10 @@ class GamePage extends Component {
           highscore3: highscore3,
           highscore1_user: highscore1user,
           highscore2_user: highscore2user,
-          highscore3_user: highscore3user
+          highscore3_user: highscore3user,
+          highscore1_score: highscore1score,
+          highscore2_score: highscore2score,
+          highscore3_score: highscore3score
         });
         console.log(this.state.highscore1);
         selectionModal.style.display = 'none';
@@ -242,10 +249,46 @@ class GamePage extends Component {
       this.setState({score: score, scoreFormatted: scoreFormatted})
       let board = document.querySelector('.board');
       board.removeEventListener('click', this.moveTileFunctions);
+      this.assignScores();
     }
   }
 
   assignScores() {
+    console.log("checking scores!");
+    console.log(this.state.score, ' is the score');
+    console.log('this is the original highscore: ', this.state.highscore1_score);
+    if(this.state.score < this.state.highscore1_score) {
+      this.setState({
+        highscore3: this.state.highscore2,
+        highscore2: this.state.highscore1,
+        highscore1: this.state.scoreFormatted,
+        highscore3_score: this.state.highscore2_score,
+        highscore2_score: this.state.highscore1_score,
+        highscore1_score: this.state.score,
+        highscore3_user: this.state.highscore2_user,
+        highscore2_user: this.state.highscore1_user,
+        highscore1_user: this.props.username
+      })
+    } else if(this.state.score < this.state.highscore2_score) {
+      this.setState({
+        highscore3: this.state.highscore2,
+        highscore2: this.state.scoreFormatted,
+        highscore3_score: this.state.highscore2_score,
+        highscore2_score: this.state.score,
+        highscore3_user: this.state.highscore2_user,
+        highscore2_user: this.props.username
+      })
+    } else if(this.state.score < this.state.hgihscore3_score) {
+      this.setState({
+        highscore3: this.state.scoreFormatted,
+        highscore3_score: this.state.score,
+        highscore3_user: this.props.username
+      })
+    } else {
+      console.log("nothing");
+    }
+
+
   }
 
   newPuzzle() {
