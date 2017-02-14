@@ -13,6 +13,8 @@ class App extends Component {
       userID: '',
       username: 'Guest'
     }
+
+    this.logOut = this.logOut.bind(this);
   }
 
   updateCurrentToken(newToken) {
@@ -33,10 +35,22 @@ class App extends Component {
     });
   }
 
+  logOut() {
+    console.log('logging out');
+    this.setState({
+      currentToken: '',
+      userID: '',
+      username: 'Guest'
+    })
+  }
+
   render(){
     return(
       <container>
-        <NavBar />
+        <NavBar
+          logOut={this.logOut}
+        />
+
         {this.props.children && React.cloneElement(this.props.children, {
           state: this.state,
           updateCurrentToken: this.updateCurrentToken.bind(this),
@@ -44,6 +58,7 @@ class App extends Component {
           updateUsername: this.updateUsername.bind(this),
           username: this.state.username
         })}
+
       </container>
     )
   }
