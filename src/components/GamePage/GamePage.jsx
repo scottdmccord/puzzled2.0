@@ -84,22 +84,27 @@ class GamePage extends Component {
         this.state.puzzleGrid[i][j] = { x: (i * -eval(width)), y: (j * -eval(height))};
       }
     }
-    this.loadPuzzle();
+    this.loadPuzzle(lowercaseDifficulty);
   };
 
   // Fetches the puzzle from the psql database and saves the information in state.
-  loadPuzzle(){
+  loadPuzzle(difficulty){
+    console.log('the selected difficulty is ' + difficulty)
     let board = document.querySelector('.board');
     let selectionModal = document.querySelector('.selection-modal');
     fetch(`/puzzles`)
       .then(r => r.json())
       .then((data) => {
         let randomNumber = Math.floor(Math.random() * (data.length + 1));
+        let highscore1 = eval('data[randomNumber].highscore_' + difficulty + '1');
+        // let highscore1 = data[randomNumber].highscore_easy1;
         this.setState({
           puzzleNumber: randomNumber,
           puzzleName: data[randomNumber].name,
-          puzzleURL: data[randomNumber].url
+          puzzleURL: data[randomNumber].url,
+          highscore1: highscore1
         });
+        console.log(this.state.highscore1);
         selectionModal.style.display = 'none';
         this.generatePieces();
       })
