@@ -215,7 +215,7 @@ class GamePage extends Component {
   newPuzzle() {
     console.log('new puzzle!');
     let selectionModal = document.querySelector('.selection-modal');
-    selectionModal.style.display = 'block';
+    selectionModal.style.display = 'flex';
     this.setState(this.baseState);
     this.setState({ puzzleGrid: [] });
     let board = document.querySelector('.board');

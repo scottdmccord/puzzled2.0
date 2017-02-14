@@ -1,10 +1,14 @@
 .navbar {
   background-color: yellow;
   border: solid 2px red;
+  display: flex;
+  flex-direction: row;
 }
 
 .navbar-category {
   font-size: 20px;
   color: purple;
   padding: 10px 0px;
+  display: inline-block;
+  margin: 0px 10px;
 }
