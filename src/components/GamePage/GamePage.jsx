@@ -399,6 +399,12 @@ class GamePage extends Component {
           minutesTENS={this.state.minutesTENS}
           hoursONES={this.state.hoursONES}
           hoursTENS={this.state.hoursTENS}
+          highscore1={this.state.highscore1}
+          highscore1_user={this.state.highscore1_user}
+          highscore2={this.state.highscore2}
+          highscore2_user={this.state.highscore2_user}
+          highscore3={this.state.highscore3}
+          highscore3_user={this.state.highscore3_user}
         />
         <Board
           scramblePuzzle={this.scramblePuzzle}
