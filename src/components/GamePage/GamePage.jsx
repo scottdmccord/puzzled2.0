@@ -32,17 +32,16 @@ class GamePage extends Component {
         expertHeight: 50.7,
         expertWidth: 56.375
       },
-      secondONES: 0,
-      timer: {
-        milisecondsONES: 0,
-        milisecondsTENS: 0,
-        secondsONES: 0,
-        secondsTENS: 0,
-        minutesONES: 0,
-        minutesTENS: 0,
-        hoursONES: 0,
-        hoursTENS: 0
-      },
+      timer: null,
+      millisecondsONES: 0,
+      millisecondsTENS: 0,
+      millisecondsHUNDREDS: 0,
+      secondsONES: 0,
+      secondsTENS: 0,
+      minutesONES: 0,
+      minutesTENS: 0,
+      hoursONES: 0,
+      hoursTENS: 0,
       puzzleGrid: [],
       shuffled: false,
       turn: 0,
@@ -219,6 +218,7 @@ class GamePage extends Component {
     if(this.state.win === true) {
       console.log("win");
       setTimeout(() => {
+        clearInterval(this.state.timer);
         alert('You win! Click "New Puzzle" to try again.');
       }, 250);
       let board = document.querySelector('.board');
@@ -234,17 +234,66 @@ class GamePage extends Component {
     this.setState({ puzzleGrid: [] });
     let board = document.querySelector('.board');
     board.innerHTML = '';
+    clearInterval(this.state.timer);
   }
 
   startTimer() {
     console.log('starting timer');
-    let timer = setInterval(this.tickTimer, 1000)
+    this.setState({ timer: setInterval(this.tickTimer, 10) })
   }
 
   tickTimer() {
-    console.log('counting');
-    this.setState({secondOnes: this.state.secondONES ++})
-    console.log(this.state.secondONES);
+    this.setState({millisecondsTENS: this.state.millisecondsTENS + 1})
+
+    if(this.state.millisecondsTENS > 9) {
+      this.setState({
+        millisecondsTENS: 0,
+        millisecondsHUNDREDS: this.state.millisecondsHUNDREDS + 1
+      })
+    }
+
+    if(this.state.millisecondsHUNDREDS > 9) {
+      this.setState({
+        millisecondsHUNDREDS: 0,
+        secondsONES: this.state.secondsONES + 1
+      })
+    }
+
+    if(this.state.secondsONES > 9) {
+      this.setState({
+        secondsONES: 0,
+        secondsTENS: this.state.secondsTENS + 1
+      })
+    }
+
+    if(this.state.secondsTENS > 5) {
+      this.setState({
+        secondsTENS: 0,
+        minutesONES: this.state.minutesONES + 1
+      })
+    }
+
+    if(this.state.minutesONES > 9) {
+      this.setState({
+        minutesONES: 0,
+        minutesTENS: this.state.minutesTENS + 1
+      })
+    }
+
+    if(this.state.minutesTENS > 5) {
+      this.setState({
+        minutesTENS: 0,
+        hoursONES: this.state.hoursONES + 1
+      })
+    }
+
+    if(this.state.hoursONES > 9) {
+      this.setState({
+        hoursONES: 0,
+        hoursTENS: this.state.hoursTENS + 1
+      })
+    }
+
   }
 
   render(){
@@ -255,8 +304,15 @@ class GamePage extends Component {
         <h1> Game Page </h1>
         <h2> Welcome, {this.props.username}!</h2>
         <InfoPanel
-          timer={this.state.timer}
-          secondONES={this.state.secondONES}
+          millisecondsONES={this.state.millisecondsONES}
+          millisecondsTENS={this.state.millisecondsTENS}
+          millisecondsHUNDREDS={this.state.millisecondsHUNDREDS}
+          secondsONES={this.state.secondsONES}
+          secondsTENS={this.state.secondsTENS}
+          minutesONES={this.state.minutesONES}
+          minutesTENS={this.state.minutesTENS}
+          hoursONES={this.state.hoursONES}
+          hoursTENS={this.state.hoursTENS}
         />
         <Board
           scramblePuzzle={this.scramblePuzzle}
