@@ -235,9 +235,17 @@ class GamePage extends Component {
         clearInterval(this.state.timer);
         alert('You win! Click "New Puzzle" to try again.');
       }, 250);
+      let score = parseInt(this.state.hoursTENS.toString() + this.state.hoursONES.toString() + this.state.minutesTENS.toString() + this.state.minutesONES.toString() + this.state.secondsTENS.toString() + this.state.secondsONES.toString() + this.state.millisecondsHUNDREDS.toString() + this.state.millisecondsTENS.toString());
+      let scoreFormatted = this.state.hoursTENS.toString() + this.state.hoursONES.toString() + ':' + this.state.minutesTENS.toString() + this.state.minutesONES.toString() + ':' + this.state.secondsTENS.toString() + this.state.secondsONES.toString() + ':' + this.state.millisecondsHUNDREDS.toString() + this.state.millisecondsTENS.toString();
+      console.log(score);
+      console.log(scoreFormatted);
+      this.setState({score: score, scoreFormatted: scoreFormatted})
       let board = document.querySelector('.board');
       board.removeEventListener('click', this.moveTileFunctions);
     }
+  }
+
+  assignScores() {
   }
 
   newPuzzle() {
