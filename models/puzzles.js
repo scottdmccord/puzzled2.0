@@ -10,6 +10,7 @@ function getPuzzle(req, res, next) {
 }
 
 function updatePuzzle(req, res, next) {
+  console.log('updating scores');
   db.none(`UPDATE puzzles
            SET highscore_easy1 = $2, highscore_easy1_user = $3, highscore_easy1_score = $4, highscore_easy2 = $5, highscore_easy2_user = $6, highscore_easy2_score = $7, highscore_easy3 = $8, highscore_easy3_user = $9, highscore_easy3_score = $10
            WHERE id = $1
@@ -22,12 +23,12 @@ function updatePuzzle(req, res, next) {
 
 function refreshScores(req, res, next) {
   console.log('refreshing scores in model');
-  db.one(`SELECT * FROM puzzles WHERE url = $1`, [req.params.url])
-  .then((puzzle) => {
-    res.puzzle = puzzle;
-    next();
-  })
-  .catch(err => console.log(err));
+  db.any(`SELECT * FROM puzzles WHERE id = $1`, [req.params.id])
+    .then((puzzle) => {
+      res.puzzle = puzzle;
+      next();
+    })
+    .catch(err => console.log(err));
 }
 
 module.exports = {
