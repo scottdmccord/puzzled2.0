@@ -20,6 +20,16 @@ function updatePuzzle(req, res, next) {
   .catch(err => console.log(err));
 }
 
+function refreshScores(req, res, next) {
+  console.log('refreshing scores in model');
+  db.one(`SELECT * FROM puzzles WHERE url = $1`, [req.params.url])
+  .then((puzzle) => {
+    res.puzzle = puzzle;
+    next();
+  })
+  .catch(err => console.log(err));
+}
+
 module.exports = {
-  getPuzzle, updatePuzzle
+  getPuzzle, updatePuzzle, refreshScores
 }
