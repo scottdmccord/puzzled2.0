@@ -1,11 +1,11 @@
+DROP TABLE IF EXISTS scores;
 DROP TABLE IF EXISTS puzzles;
 DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS scores;
 
 CREATE TABLE puzzles (
   id SERIAL PRIMARY KEY,
   name VARCHAR NOT NULL,
-  url TEXT NOT NULL,
+  url TEXT NOT NULL
 );
 
 CREATE TABLE users (
@@ -19,7 +19,7 @@ CREATE TABLE users (
 CREATE TABLE scores (
   id SERIAL PRIMARY KEY,
   score INT,
-  time TEXT,
+  clock TEXT,
   user_id INT,
   puzzle_id INT,
   difficulty TEXT,
@@ -36,6 +36,6 @@ ALTER TABLE ONLY scores
 ALTER TABLE ONLY scores
   ADD CONSTRAINT scores_puzzle_id_fkey
   FOREIGN KEY (puzzle_id)
-  REFERENCES consumers(id)
+  REFERENCES puzzles(id)
   ON UPDATE CASCADE
   ON DELETE CASCADE;
