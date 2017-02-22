@@ -67,6 +67,7 @@ class GamePage extends Component {
     this.assignScores = this.assignScores.bind(this);
     this.updateScores = this.updateScores.bind(this);
     this.refreshScores = this.refreshScores.bind(this);
+    this.scoreComparison = this.scoreComparison.bind(this);
 
   }
 
@@ -261,7 +262,11 @@ class GamePage extends Component {
     console.log("checking scores!");
     console.log(this.state.score, ' is the score');
     console.log('this is the original highscore: ', this.state.highscore1_score);
+    this.scoreComparison();
+    this.updateScores(this.state.puzzleID);
+  }
 
+  scoreComparison() {
     if(this.state.score < this.state.highscore1_score) {
       this.setState({
         highscore3: this.state.highscore2,
@@ -292,8 +297,8 @@ class GamePage extends Component {
     } else {
       console.log("nothing");
     }
-    this.updateScores(this.state.puzzleID);
   }
+
 
   refreshScores(id) {
     console.log('id: ', id);

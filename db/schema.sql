@@ -1,46 +1,11 @@
 DROP TABLE IF EXISTS puzzles;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS scores;
 
 CREATE TABLE puzzles (
   id SERIAL PRIMARY KEY,
   name VARCHAR NOT NULL,
   url TEXT NOT NULL,
-  highscore_easy1 TEXT DEFAULT 'No high score',
-  highscore_easy1_user TEXT DEFAULT 'n/a',
-  highscore_easy1_score INT DEFAULT 99999999,
-  highscore_easy2 TEXT DEFAULT 'No high score',
-  highscore_easy2_user TEXT DEFAULT 'n/a',
-  highscore_easy2_score INT DEFAULT 99999999,
-  highscore_easy3 TEXT DEFAULT 'No high score',
-  highscore_easy3_user TEXT DEFAULT 'n/a',
-  highscore_easy3_score INT DEFAULT 99999999,
-  highscore_medium1 TEXT DEFAULT 'No high score',
-  highscore_medium1_user TEXT DEFAULT 'n/a',
-  highscore_medium1_score INT DEFAULT 99999999,
-  highscore_medium2 TEXT DEFAULT 'No high score',
-  highscore_medium2_user TEXT DEFAULT 'n/a',
-  highscore_medium2_score INT DEFAULT 99999999,
-  highscore_medium3 TEXT DEFAULT 'No high score',
-  highscore_medium3_user TEXT DEFAULT 'n/a',
-  highscore_medium3_score INT DEFAULT 99999999,
-  highscore_hard1 TEXT DEFAULT 'No high score',
-  highscore_hard1_user TEXT DEFAULT 'n/a',
-  highscore_hard1_score INT DEFAULT 99999999,
-  highscore_hard2 TEXT DEFAULT 'No high score',
-  highscore_hard2_user TEXT DEFAULT 'n/a',
-  highscore_hard2_score INT DEFAULT 99999999,
-  highscore_hard3 TEXT DEFAULT 'No high score',
-  highscore_hard3_user TEXT DEFAULT 'n/a',
-  highscore_hard3_score INT DEFAULT 99999999,
-  highscore_expert1 TEXT DEFAULT 'No high score',
-  highscore_expert1_user TEXT DEFAULT 'n/a',
-  highscore_expert1_score INT DEFAULT 99999999,
-  highscore_expert2 TEXT DEFAULT 'No high score',
-  highscore_expert2_user TEXT DEFAULT 'n/a',
-  highscore_expert2_score INT DEFAULT 99999999,
-  highscore_expert3 TEXT DEFAULT 'No high score',
-  highscore_expert3_user TEXT DEFAULT 'n/a',
-  highscore_expert3_score INT DEFAULT 99999999
 );
 
 CREATE TABLE users (
@@ -50,3 +15,27 @@ CREATE TABLE users (
   email VARCHAR NOT NULL,
   date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
+
+CREATE TABLE scores (
+  id SERIAL PRIMARY KEY,
+  score INT,
+  time TEXT,
+  user_id INT,
+  puzzle_id INT,
+  difficulty TEXT,
+  date_created TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+ALTER TABLE ONLY scores
+  ADD CONSTRAINT scores_user_id_fkey
+  FOREIGN KEY (user_id)
+  REFERENCES users(id)
+  ON UPDATE CASCADE
+  ON DELETE CASCADE;
+
+ALTER TABLE ONLY scores
+  ADD CONSTRAINT scores_puzzle_id_fkey
+  FOREIGN KEY (puzzle_id)
+  REFERENCES consumers(id)
+  ON UPDATE CASCADE
+  ON DELETE CASCADE;
