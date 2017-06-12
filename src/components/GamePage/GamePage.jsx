@@ -71,7 +71,7 @@ class GamePage extends Component {
 
   }
 
-  // Set the puzzle's state to easy, define the grid of puzzle pieces
+  // Set the puzzle's difficulty, define the grid of puzzle pieces
   // and load the puzzle from the database.
   createPuzzle(event){
     let difficultySelected = event.target.innerHTML;
@@ -90,7 +90,7 @@ class GamePage extends Component {
     this.loadPuzzle(lowercaseDifficulty);
   };
 
-  // Fetches the puzzle from the psql database and saves the information in state.
+  // Fetches puzzles from the psql database, select a random one, and saves its information in state.
   loadPuzzle(difficulty){
     console.log('the selected difficulty is ' + difficulty)
     let board = document.querySelector('.board');
@@ -98,33 +98,32 @@ class GamePage extends Component {
     fetch(`/puzzles`)
       .then(r => r.json())
       .then((data) => {
+        debugger
         let randomNumber = Math.floor(Math.random() * (data.length + 1));
-        let highscore1 = eval('data[randomNumber].highscore_' + difficulty + '1');
-        let highscore2 = eval('data[randomNumber].highscore_' + difficulty + '2');
-        let highscore3 = eval('data[randomNumber].highscore_' + difficulty + '3');
-        let highscore1user = eval('data[randomNumber].highscore_' + difficulty + '1' + '_user');
-        let highscore2user = eval('data[randomNumber].highscore_' + difficulty + '2' + '_user');
-        let highscore3user = eval('data[randomNumber].highscore_' + difficulty + '3' + '_user');
-        let highscore1score = eval('data[randomNumber].highscore_' + difficulty + '1' + '_score');
-        let highscore2score = eval('data[randomNumber].highscore_' + difficulty + '2' + '_score');
-        let highscore3score = eval('data[randomNumber].highscore_' + difficulty + '3' + '_score');
+        // let highscore1 = eval('data[randomNumber].highscore_' + difficulty + '1');
+        // let highscore2 = eval('data[randomNumber].highscore_' + difficulty + '2');
+        // let highscore3 = eval('data[randomNumber].highscore_' + difficulty + '3');
+        // let highscore1user = eval('data[randomNumber].highscore_' + difficulty + '1' + '_user');
+        // let highscore2user = eval('data[randomNumber].highscore_' + difficulty + '2' + '_user');
+        // let highscore3user = eval('data[randomNumber].highscore_' + difficulty + '3' + '_user');
+        // let highscore1score = eval('data[randomNumber].highscore_' + difficulty + '1' + '_score');
+        // let highscore2score = eval('data[randomNumber].highscore_' + difficulty + '2' + '_score');
+        // let highscore3score = eval('data[randomNumber].highscore_' + difficulty + '3' + '_score');
         // let highscore1 = data[randomNumber].highscore_easy1;
         this.setState({
-
           puzzleID: data[randomNumber].id,
           puzzleName: data[randomNumber].name,
           puzzleURL: data[randomNumber].url,
-          highscore1: highscore1,
-          highscore2: highscore2,
-          highscore3: highscore3,
-          highscore1_user: highscore1user,
-          highscore2_user: highscore2user,
-          highscore3_user: highscore3user,
-          highscore1_score: highscore1score,
-          highscore2_score: highscore2score,
-          highscore3_score: highscore3score
+          // highscore1: highscore1,
+          // highscore2: highscore2,
+          // highscore3: highscore3,
+          // highscore1_user: highscore1user,
+          // highscore2_user: highscore2user,
+          // highscore3_user: highscore3user,
+          // highscore1_score: highscore1score,
+          // highscore2_score: highscore2score,
+          // highscore3_score: highscore3score
         });
-        console.log(this.state.highscore1);
         selectionModal.style.display = 'none';
         this.generatePieces();
       })
