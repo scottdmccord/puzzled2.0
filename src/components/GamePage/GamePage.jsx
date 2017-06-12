@@ -62,7 +62,7 @@ class GamePage extends Component {
     this.checkWin = this.checkWin.bind(this);
     this.moveTileFunctions = this.moveTileFunctions.bind(this);
     this.newPuzzle = this.newPuzzle.bind(this);
-    this.startTImer = this.startTimer.bind(this);
+    this.startTimer = this.startTimer.bind(this);
     this.tickTimer = this.tickTimer.bind(this);
     this.assignScores = this.assignScores.bind(this);
     this.updateScores = this.updateScores.bind(this);
