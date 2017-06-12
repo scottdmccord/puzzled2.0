@@ -9,18 +9,18 @@ INSERT INTO users (username, password, email) VALUES ('Scott', 'test', 'Scott@te
 INSERT INTO users (username, password, email) VALUES ('Phil', 'test', 'Phil@test.com');
 
 INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (1, '1:00', 1, 1, 'easy');
-INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (2, '2:00', 2, 1, 'easy');
-INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (3, '3:00', 3, 1, 'easy');
-INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (1, '1:00', 1, 2, 'easy');
-INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (2, '2:00', 2, 2, 'easy');
-INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (3, '3:00', 3, 2, 'easy');
-INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (1, '1:00', 1, 3, 'easy');
-INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (2, '2:00', 2, 3, 'easy');
-INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (3, '3:00', 3, 3, 'easy');
-INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (1, '1:00', 1, 4, 'easy');
-INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (2, '2:00', 2, 4, 'easy');
-INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (3, '3:00', 3, 4, 'easy');
-INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (1, '1:00', 1, 5, 'easy');
-INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (2, '2:00', 2, 5, 'easy');
-INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (3, '3:00', 3, 5, 'easy');
+-- INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (2, '2:00', 2, 1, 'easy');
+-- INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (3, '3:00', 3, 1, 'easy');
+-- INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (1, '1:00', 1, 2, 'easy');
+-- INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (2, '2:00', 2, 2, 'easy');
+-- INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (3, '3:00', 3, 2, 'easy');
+-- INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (1, '1:00', 1, 3, 'easy');
+-- INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (2, '2:00', 2, 3, 'easy');
+-- INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (3, '3:00', 3, 3, 'easy');
+-- INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (1, '1:00', 1, 4, 'easy');
+-- INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (2, '2:00', 2, 4, 'easy');
+-- INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (3, '3:00', 3, 4, 'easy');
+-- INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (1, '1:00', 1, 5, 'easy');
+-- INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (2, '2:00', 2, 5, 'easy');
+-- INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (3, '3:00', 3, 5, 'easy');
 
