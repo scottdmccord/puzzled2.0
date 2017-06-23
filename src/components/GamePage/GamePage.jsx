@@ -48,7 +48,8 @@ class GamePage extends Component {
       divB: null,
       divAID: null,
       divBID: null,
-      win: true
+      win: true,
+      scores: []
     }
 
     this.baseState = this.state;
@@ -116,7 +117,13 @@ class GamePage extends Component {
   loadScores(puzzleId) {
     console.log("Puzzle ID is: ", puzzleId);
     fetch(`/scores`)
-
+      .then(r => r.json())
+      .then((data) => {
+        this.setState({
+          scores: data
+        });
+      })
+      .catch(err => console.log(err));
   }
 
   // Separates the puzzle image into 6 separate divs.
