@@ -5,8 +5,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const path = require('path');
+
+// require routers
 const puzzleRouter = require('./routes/puzzles');
 const userRouter = require('./routes/users');
+const scoresRouter = require('./routes/scores')
 
 const app = express();
 const PORT = process.argv[2] || process.env.PORT || 3000;
@@ -19,6 +22,7 @@ app.use(bodyParser.json());
 
 app.use('/puzzles', puzzleRouter);
 app.use('/users', userRouter);
+app.use('/scores', scoresRouter);
 
 app.get('*', function (request, response){
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))

@@ -54,6 +54,7 @@ class GamePage extends Component {
     this.baseState = this.state;
     this.loadPuzzle = this.loadPuzzle.bind(this);
     this.createPuzzle = this.createPuzzle.bind(this);
+    this.loadScores = this.loadScores.bind(this);
     this.generatePieces = this.generatePieces.bind(this);
     this.shuffleArray = this.shuffleArray.bind(this);
     this.scramblePuzzle = this.scramblePuzzle.bind(this);
@@ -99,6 +100,7 @@ class GamePage extends Component {
       .then(r => r.json())
       .then((data) => {
         let randomNumber = Math.floor(Math.random() * (data.length + 1));
+        this.loadScores(randomNumber + 1);
         this.setState({
           puzzleID: data[randomNumber].id,
           puzzleName: data[randomNumber].name,
@@ -111,7 +113,9 @@ class GamePage extends Component {
   }
 
   // load the high scores
-  loadScores() {
+  loadScores(puzzleId) {
+    console.log("Puzzle ID is: ", puzzleId);
+    fetch(`/scores`)
 
   }
 
