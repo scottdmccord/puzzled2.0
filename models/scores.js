@@ -8,7 +8,9 @@ function getScores(req, res, next) {
             FROM scores
             LEFT JOIN users
               ON (scores.user_id = users.id)
-          WHERE puzzle_id = $1`, req.params.id)
+          WHERE puzzle_id = $1
+          ORDER BY score ASC
+          LIMIT 3`, req.params.id)
     .then((scores) => {
       console.log(scores);
       res.rows = scores;
