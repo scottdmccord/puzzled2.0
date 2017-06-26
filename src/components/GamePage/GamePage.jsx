@@ -271,6 +271,7 @@ class GamePage extends Component {
 // TO COMPLETE!
   submitScore() {
     console.log('submitting scores');
+    console.log('DIFFICULTY IS: ', this.state.difficulty)
     fetch('/scores', {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
@@ -281,7 +282,8 @@ class GamePage extends Component {
         clock: this.state.scoreFormatted,
         puzzleID: this.state.puzzleID,
         userID: this.props.userID,
-        username: this.props.username
+        username: this.props.username,
+        difficulty: this.state.difficulty
       })
     })
       .then(() => {

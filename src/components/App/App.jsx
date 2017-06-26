@@ -10,7 +10,7 @@ class App extends Component {
 
     this.state = {
       currentToken: '',
-      userID: '',
+      userID: 1,
       username: 'Guest'
     }
 

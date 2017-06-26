@@ -20,8 +20,8 @@ function getScores(req, res, next) {
 }
 
 function submitScore(req, res, next) {
-  db.none(`INSERT INTO scores (score, clock, user_id, puzzle_id) VALUES ($1, $2, $3, $4)`,
-    [req.body.score, req.body.clock, req.body.userID, req.body.puzzleID])
+  db.none(`INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES ($1, $2, $3, $4, $5)`,
+    [req.body.score, req.body.clock, req.body.userID, req.body.puzzleID, req.body.difficulty])
     .then(next())
     .catch(err => next(err));
 }
