@@ -115,7 +115,7 @@ class GamePage extends Component {
     fetch(`/puzzles`)
       .then(r => r.json())
       .then((data) => {
-        let randomNumber = Math.floor(Math.random() * (data.length + 1));
+        let randomNumber = Math.floor(Math.random() * (data.length));
         this.loadScores(randomNumber + 1);
         this.setState({
           puzzleID: data[randomNumber].id,
