@@ -49,7 +49,21 @@ class GamePage extends Component {
       divAID: null,
       divBID: null,
       win: true,
-      scores: []
+      scores: [{
+        clock: '',
+        username: '',
+        score: ''
+      },
+      {
+        clock: '',
+        username: '',
+        score: ''
+      },
+      {
+        clock: '',
+        username: '',
+        score: ''
+      }]
     }
 
     this.baseState = this.state;
@@ -432,12 +446,12 @@ class GamePage extends Component {
           minutesTENS={this.state.minutesTENS}
           hoursONES={this.state.hoursONES}
           hoursTENS={this.state.hoursTENS}
-          highscore1={this.state.scores[0][0].clock}
-          highscore1_user={this.state.scores[0][0].username}
-          highscore2={this.state.highscore2}
-          highscore2_user={this.state.highscore2_user}
-          highscore3={this.state.highscore3}
-          highscore3_user={this.state.highscore3_user}
+          highscore1={this.state.scores[0]['clock']}
+          highscore1_user={this.state.scores[0]['username']}
+          highscore2={this.state.scores[1]['clock']}
+          highscore2_user={this.state.scores[1]['username']}
+          highscore3={this.state.scores[2]['clock']}
+          highscore3_user={this.state.scores[2]['username']}
         />
         <Board
           scramblePuzzle={this.scramblePuzzle}
