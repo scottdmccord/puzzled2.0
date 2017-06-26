@@ -70,7 +70,7 @@ class GamePage extends Component {
     // this.assignScores = this.assignScores.bind(this);
     // this.updateScores = this.updateScores.bind(this);
     // this.refreshScores = this.refreshScores.bind(this);
-    this.scoreComparison = this.scoreComparison.bind(this);
+    // this.scoreComparison = this.scoreComparison.bind(this);
 
   }
 
