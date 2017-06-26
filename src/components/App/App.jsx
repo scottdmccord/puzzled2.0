@@ -56,7 +56,8 @@ class App extends Component {
           updateCurrentToken: this.updateCurrentToken.bind(this),
           updateUserID: this.updateUserID.bind(this),
           updateUsername: this.updateUsername.bind(this),
-          username: this.state.username
+          username: this.state.username,
+          userID: this.state.userID
         })}
 
       </container>

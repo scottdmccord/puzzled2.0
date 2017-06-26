@@ -19,10 +19,14 @@ function getScores(req, res, next) {
     .catch(err => console.log(err));
 }
 
-// function submitScores(req, res, next) {
-//   db.none(`INSERT INTO scores ()`)
-// }
+function submitScore(req, res, next) {
+  db.none(`INSERT INTO scores (score, clock, user_id, puzzle_id) VALUES ($1, $2, $3, $4)`,
+    [req.body.score, req.body.clock, req.body.userID, req.body.puzzleID])
+    .then(next())
+    .catch(err => next(err));
+}
 
 module.exports = {
-  getScores
+  getScores,
+  submitScore
 }
