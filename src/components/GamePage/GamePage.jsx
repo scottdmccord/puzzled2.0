@@ -66,9 +66,10 @@ class GamePage extends Component {
     this.newPuzzle = this.newPuzzle.bind(this);
     this.startTimer = this.startTimer.bind(this);
     this.tickTimer = this.tickTimer.bind(this);
-    this.assignScores = this.assignScores.bind(this);
-    this.updateScores = this.updateScores.bind(this);
-    this.refreshScores = this.refreshScores.bind(this);
+    this.submitScore = this.submitScore.bind(this);
+    // this.assignScores = this.assignScores.bind(this);
+    // this.updateScores = this.updateScores.bind(this);
+    // this.refreshScores = this.refreshScores.bind(this);
     this.scoreComparison = this.scoreComparison.bind(this);
 
   }
@@ -248,8 +249,33 @@ class GamePage extends Component {
       this.setState({score: score, scoreFormatted: scoreFormatted})
       let board = document.querySelector('.board');
       board.removeEventListener('click', this.moveTileFunctions);
-      this.assignScores();
+      // this.submitScore();
     }
+  }
+
+
+// TO COMPLETE!
+  submitScore() {
+    console.log('submitting scores');
+    fetch('/scores', {
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        score: this.state.score,
+        scoreFormatted: this.state.scoreFormatted,
+        puzzleID: this.state.puzzleID,
+        // userID: this.state.
+      })
+    })
+      .then(() => {
+        this.setState({
+          score: '',
+          scoreFormatted: ''
+        })
+      })
+      .catch(err => console.log(err));
   }
 
   assignScores() {
@@ -261,95 +287,63 @@ class GamePage extends Component {
     this.updateScores(this.state.puzzleID);
   }
 
-  scoreComparison() {
-    if(this.state.score < this.state.highscore1_score) {
-      this.setState({
-        highscore3: this.state.highscore2,
-        highscore2: this.state.highscore1,
-        highscore1: this.state.scoreFormatted,
-        highscore3_score: this.state.highscore2_score,
-        highscore2_score: this.state.highscore1_score,
-        highscore1_score: this.state.score,
-        highscore3_user: this.state.highscore2_user,
-        highscore2_user: this.state.highscore1_user,
-        highscore1_user: this.props.username
-      })
-    } else if(this.state.score < this.state.highscore2_score) {
-      this.setState({
-        highscore3: this.state.highscore2,
-        highscore2: this.state.scoreFormatted,
-        highscore3_score: this.state.highscore2_score,
-        highscore2_score: this.state.score,
-        highscore3_user: this.state.highscore2_user,
-        highscore2_user: this.props.username
-      })
-    } else if(this.state.score < this.state.highscore3_score) {
-      this.setState({
-        highscore3: this.state.scoreFormatted,
-        highscore3_score: this.state.score,
-        highscore3_user: this.props.username
-      })
-    } else {
-      console.log("nothing");
-    }
-  }
 
 
-  refreshScores(id) {
-    console.log('id: ', id);
-    fetch(`/puzzles/${id}`)
-      .then(r => r.json())
-      .then((data) => {
-        let difficulty = this.state.difficulty;
-        let lowercaseDifficulty = difficulty.toLowerCase();
-        let highscore1 = eval('data[0].highscore_' + lowercaseDifficulty + '1');
-        let highscore2 = eval('data[0].highscore_' + lowercaseDifficulty + '2');
-        let highscore3 = eval('data[0].highscore_' + lowercaseDifficulty + '3');
-        let highscore1user = eval('data[0].highscore_' + lowercaseDifficulty + '1' + '_user');
-        let highscore2user = eval('data[0].highscore_' + lowercaseDifficulty + '2' + '_user');
-        let highscore3user = eval('data[0].highscore_' + lowercaseDifficulty + '3' + '_user');
-        let highscore1score = eval('data[0].highscore_' + lowercaseDifficulty + '1' + '_score');
-        let highscore2score = eval('data[0].highscore_' + lowercaseDifficulty + '2' + '_score');
-        let highscore3score = eval('data[0].highscore_' + lowercaseDifficulty + '3' + '_score');
-        console.log(highscore1);
-        this.setState({
-          puzzleID: data[0].id,
-          puzzleName: data[0].name,
-          puzzleURL: data[0].url,
-          highscore1: highscore1,
-          highscore2: highscore2,
-          highscore3: highscore3,
-          highscore1_user: highscore1user,
-          highscore2_user: highscore2user,
-          highscore3_user: highscore3user,
-          highscore1_score: highscore1score,
-          highscore2_score: highscore2score,
-          highscore3_score: highscore3score
-        });
-      })
-      .catch(err => console.log(err));
-  }
+  // refreshScores(id) {
+  //   console.log('id: ', id);
+  //   fetch(`/puzzles/${id}`)
+  //     .then(r => r.json())
+  //     .then((data) => {
+  //       let difficulty = this.state.difficulty;
+  //       let lowercaseDifficulty = difficulty.toLowerCase();
+  //       let highscore1 = eval('data[0].highscore_' + lowercaseDifficulty + '1');
+  //       let highscore2 = eval('data[0].highscore_' + lowercaseDifficulty + '2');
+  //       let highscore3 = eval('data[0].highscore_' + lowercaseDifficulty + '3');
+  //       let highscore1user = eval('data[0].highscore_' + lowercaseDifficulty + '1' + '_user');
+  //       let highscore2user = eval('data[0].highscore_' + lowercaseDifficulty + '2' + '_user');
+  //       let highscore3user = eval('data[0].highscore_' + lowercaseDifficulty + '3' + '_user');
+  //       let highscore1score = eval('data[0].highscore_' + lowercaseDifficulty + '1' + '_score');
+  //       let highscore2score = eval('data[0].highscore_' + lowercaseDifficulty + '2' + '_score');
+  //       let highscore3score = eval('data[0].highscore_' + lowercaseDifficulty + '3' + '_score');
+  //       console.log(highscore1);
+  //       this.setState({
+  //         puzzleID: data[0].id,
+  //         puzzleName: data[0].name,
+  //         puzzleURL: data[0].url,
+  //         highscore1: highscore1,
+  //         highscore2: highscore2,
+  //         highscore3: highscore3,
+  //         highscore1_user: highscore1user,
+  //         highscore2_user: highscore2user,
+  //         highscore3_user: highscore3user,
+  //         highscore1_score: highscore1score,
+  //         highscore2_score: highscore2score,
+  //         highscore3_score: highscore3score
+  //       });
+  //     })
+  //     .catch(err => console.log(err));
+  // }
 
-  updateScores(id) {
-    console.log('updating scores');
-    fetch(`/puzzles/${id}`, {
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8'
-      },
-      method: 'PUT',
-      body: JSON.stringify({
-        highscore1: this.state.highscore1,
-        highscore2: this.state.highscore2,
-        highscore3: this.state.highscore3,
-        highscore1_score: this.state.highscore1_score,
-        highscore2_score: this.state.highscore2_score,
-        highscore3_score: this.state.highscore3_score,
-        highscore1_user: this.state.highscore1_user,
-        highscore2_user: this.state.highscore2_user,
-        highscore3_user: this.state.highscore3_user
-      })
-    })
-  }
+  // updateScores(id) {
+  //   console.log('updating scores');
+  //   fetch(`/puzzles/${id}`, {
+  //     headers: {
+  //       'Content-Type': 'application/json; charset=UTF-8'
+  //     },
+  //     method: 'PUT',
+  //     body: JSON.stringify({
+  //       highscore1: this.state.highscore1,
+  //       highscore2: this.state.highscore2,
+  //       highscore3: this.state.highscore3,
+  //       highscore1_score: this.state.highscore1_score,
+  //       highscore2_score: this.state.highscore2_score,
+  //       highscore3_score: this.state.highscore3_score,
+  //       highscore1_user: this.state.highscore1_user,
+  //       highscore2_user: this.state.highscore2_user,
+  //       highscore3_user: this.state.highscore3_user
+  //     })
+  //   })
+  // }
 
   newPuzzle() {
     console.log('new puzzle!');
