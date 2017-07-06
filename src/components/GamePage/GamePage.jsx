@@ -287,23 +287,8 @@ class GamePage extends Component {
       })
     })
       .then(() => {
-        this.setState({
-          scores: [{
-            clock: '',
-            username: '',
-            score: ''
-          },
-          {
-            clock: '',
-            username: '',
-            score: ''
-          },
-          {
-            clock: '',
-            username: '',
-            score: ''
-          }]
-        })
+        console.log("Loading scores");
+        this.loadScores(this.state.puzzleID);
       })
       .catch(err => console.log(err));
   }
