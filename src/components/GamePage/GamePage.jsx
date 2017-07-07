@@ -81,11 +81,6 @@ class GamePage extends Component {
     this.startTimer = this.startTimer.bind(this);
     this.tickTimer = this.tickTimer.bind(this);
     this.submitScore = this.submitScore.bind(this);
-    // this.assignScores = this.assignScores.bind(this);
-    // this.updateScores = this.updateScores.bind(this);
-    // this.refreshScores = this.refreshScores.bind(this);
-    // this.scoreComparison = this.scoreComparison.bind(this);
-
   }
 
   // Set the puzzle's difficulty, define the grid of puzzle pieces
@@ -116,7 +111,7 @@ class GamePage extends Component {
       .then(r => r.json())
       .then((data) => {
         let randomNumber = Math.floor(Math.random() * (data.length));
-        this.loadScores(randomNumber + 1);
+        this.loadScores(randomNumber + 1, difficulty);
         this.setState({
           puzzleID: data[randomNumber].id,
           puzzleName: data[randomNumber].name,
@@ -129,9 +124,9 @@ class GamePage extends Component {
   }
 
   // load the high scores
-  loadScores(puzzleId) {
+  loadScores(puzzleId, difficulty) {
     console.log("Puzzle ID is: ", puzzleId);
-    fetch(`/scores/${puzzleId}`)
+    fetch(`/scores/${puzzleId}/${difficulty}`)
       .then(r => r.json())
       .then((data) => {
         this.setState({
@@ -270,8 +265,6 @@ class GamePage extends Component {
 
 // TO COMPLETE!
   submitScore() {
-    console.log('submitting scores');
-    console.log('DIFFICULTY IS: ', this.state.difficulty)
     fetch('/scores', {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
@@ -287,7 +280,6 @@ class GamePage extends Component {
       })
     })
       .then(() => {
-        console.log("Loading scores");
         this.loadScores(this.state.puzzleID);
       })
       .catch(err => console.log(err));
