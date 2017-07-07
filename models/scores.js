@@ -1,6 +1,7 @@
 const db = require('../lib/dbConnect.js');
 
 function getScores(req, res, next) {
+  console.log("Paramas: ", req.params.id, req.params.difficulty)
   db.any(`SELECT
             scores.score AS score,
             scores.clock AS clock,
@@ -8,9 +9,9 @@ function getScores(req, res, next) {
             FROM scores
             LEFT JOIN users
               ON (scores.user_id = users.id)
-          WHERE puzzle_id = $1
+          WHERE puzzle_id = $1 AND difficulty = $2
           ORDER BY score ASC
-          LIMIT 3`, req.params.id)
+          LIMIT 3`, [req.params.id, req.params.difficulty])
     .then((scores) => {
       res.rows = scores;
       next();
