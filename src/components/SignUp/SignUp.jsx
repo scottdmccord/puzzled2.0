@@ -51,18 +51,10 @@ class SignUp extends Component {
       })
     })
     .then(() => {
-      this.props.router.push('/login');
-      debugger;
-      this.setState({
-        username: '',
-        password: '',
-        email: ''
-      })
       console.log("Changing route");
-      // debugger
-      // this.props.router.push('/login');
     })
     .catch(error => console.log(error));
+    this.props.router.push('/login');
   }
 
   render(){
