@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
 import style from './LogIn.css';
 
 class LogIn extends Component {
@@ -54,15 +54,16 @@ class LogIn extends Component {
       this.props.updateCurrentToken(data.token);
       this.props.updateUserID(data.id);
       this.props.updateUsername(data.username);
-      this.setState({
-        userLogin: {
-          username: '',
-          password: ''
-        }
-      }, () => {
-        console.log(this.state);
-      })
+      // this.setState({
+      //   userLogin: {
+      //     username: '',
+      //     password: ''
+      //   }
+      // }, () => {
+      //   console.log(this.state);
+      // })
     })
+      this.props.router.push('/gamepage');
   }
 
   render(){
@@ -79,7 +80,7 @@ class LogIn extends Component {
           />
           <label>Password:</label>
           <input
-            type="text"
+            type="password"
             placeholder="enter password"
             value={this.state.userLogin.password}
             onChange={this.updatePassword}
@@ -91,4 +92,4 @@ class LogIn extends Component {
   }
 }
 
-export default LogIn;
+export default withRouter(LogIn);
