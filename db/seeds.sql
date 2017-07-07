@@ -5,9 +5,8 @@ INSERT INTO puzzles (name, url) VALUES ('Puzzle 4', 'url(http://i.imgur.com/wxiG
 INSERT INTO puzzles (name, url) VALUES ('Puzzle 5', 'url(http://i.imgur.com/mGOb37s.jpg?2)');
 
 INSERT INTO users (username, password, email) VALUES ('Guest', 'n/a', 'no@email.com');
--- INSERT INTO users (username, password, email) VALUES ('Scott', 'test', 'Scott@test.com');
--- INSERT INTO users (username, password, email) VALUES ('Phil', 'test', 'Phil@test.com');
 
+-- INSERT EASY SCORES
 INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 1, 'easy');
 INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 1, 'easy');
 INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 1, 'easy');
@@ -24,3 +23,53 @@ INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (999999
 INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 5, 'easy');
 INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 5, 'easy');
 
+-- INSERT MEDIUM SCORES
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 1, 'medium');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 1, 'medium');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 1, 'medium');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 2, 'medium');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 2, 'medium');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 2, 'medium');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 3, 'medium');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 3, 'medium');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 3, 'medium');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 4, 'medium');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 4, 'medium');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 4, 'medium');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 5, 'medium');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 5, 'medium');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 5, 'medium');
+
+-- INSERT HARD SCORES
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 1, 'hard');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 1, 'hard');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 1, 'hard');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 2, 'hard');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 2, 'hard');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 2, 'hard');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 3, 'hard');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 3, 'hard');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 3, 'hard');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 4, 'hard');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 4, 'hard');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 4, 'hard');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 5, 'hard');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 5, 'hard');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 5, 'hard');
+
+-- INSERT EXPERT SCORES
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 1, 'expert');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 1, 'expert');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 1, 'expert');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 2, 'expert');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 2, 'expert');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 2, 'expert');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 3, 'expert');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 3, 'expert');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 3, 'expert');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 4, 'expert');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 4, 'expert');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 4, 'expert');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 5, 'expert');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 5, 'expert');
+INSERT INTO scores (score, clock, user_id, puzzle_id, difficulty) VALUES (9999999, 'No Score', 1, 5, 'expert');
