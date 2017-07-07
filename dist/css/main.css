@@ -46,6 +46,11 @@ body {
   height: 40%;
   background-color: black;
 }
+
+.board-button-container {
+  display: none;
+  z-index: 1;
+}
 .board {
   box-sizing: border-box;
   margin: 0 auto;

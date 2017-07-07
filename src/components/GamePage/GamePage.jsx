@@ -86,6 +86,11 @@ class GamePage extends Component {
   // Set the puzzle's difficulty, define the grid of puzzle pieces
   // and load the puzzle from the database.
   createPuzzle(event){
+    let startButton = document.getElementById('start-button');
+    startButton.disabled = false;
+    let buttonContainer = document.querySelectorAll('.board-button-container')[0];
+    buttonContainer.style.display = "inline-block";
+    console.log(buttonContainer)
     let difficultySelected = event.target.innerHTML;
     this.setState({ difficulty: difficultySelected });
     let lowercaseDifficulty = difficultySelected.toLowerCase();
@@ -183,6 +188,8 @@ class GamePage extends Component {
 
 
   scramblePuzzle() {
+    let startButton = document.getElementById('start-button');
+    startButton.disabled = true;
     if(!this.state.shuffled) {
       this.setState({ shuffled: true });
       let board = document.querySelector('.board');
@@ -265,7 +272,7 @@ class GamePage extends Component {
   }
 
 
-// TO COMPLETE!
+  // Submit individual score to the database after each puzzle is successfully completed
   submitScore() {
     fetch('/scores', {
       headers: {
@@ -282,7 +289,7 @@ class GamePage extends Component {
       })
     })
       .then(() => {
-        this.loadScores(this.state.puzzleID);
+        this.loadScores(this.state.puzzleID, (this.state.difficulty).toLowerCase());
       })
       .catch(err => console.log(err));
   }
@@ -297,6 +304,8 @@ class GamePage extends Component {
   }
 
   newPuzzle() {
+    let buttonContainer = document.querySelectorAll('.board-button-container')[0];
+    buttonContainer.style.display = "none";
     console.log('new puzzle!');
     let selectionModal = document.querySelector('.selection-modal');
     selectionModal.style.display = 'flex';
