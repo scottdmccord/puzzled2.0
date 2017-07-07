@@ -126,9 +126,11 @@ class GamePage extends Component {
   // load the high scores
   loadScores(puzzleId, difficulty) {
     console.log("Puzzle ID is: ", puzzleId);
+    console.log("Difficulty is: ", difficulty)
     fetch(`/scores/${puzzleId}/${difficulty}`)
       .then(r => r.json())
       .then((data) => {
+        console.log(data);
         this.setState({
           scores: data
         });
