@@ -278,7 +278,7 @@ class GamePage extends Component {
         puzzleID: this.state.puzzleID,
         userID: this.props.userID,
         username: this.props.username,
-        difficulty: this.state.difficulty
+        difficulty: (this.state.difficulty).toLowerCase()
       })
     })
       .then(() => {
