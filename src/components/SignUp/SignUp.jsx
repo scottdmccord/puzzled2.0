@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
 import Style from './SignUp.css';
 
 class SignUp extends Component {
@@ -51,11 +51,16 @@ class SignUp extends Component {
       })
     })
     .then(() => {
+      this.props.router.push('/login');
+      debugger;
       this.setState({
         username: '',
         password: '',
         email: ''
       })
+      console.log("Changing route");
+      // debugger
+      // this.props.router.push('/login');
     })
     .catch(error => console.log(error));
   }
@@ -93,4 +98,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);
