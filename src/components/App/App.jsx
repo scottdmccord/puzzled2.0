@@ -39,7 +39,7 @@ class App extends Component {
     console.log('logging out');
     this.setState({
       currentToken: '',
-      userID: '',
+      userID: '1',
       username: 'Guest'
     })
   }
