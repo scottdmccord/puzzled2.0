@@ -10,7 +10,7 @@ CREATE TABLE puzzles (
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  username VARCHAR(20) NOT NULL,
+  username VARCHAR(20) NOT NULL UNIQUE,
   password VARCHAR NOT NULL,
   email VARCHAR NOT NULL,
   date_created TIMESTAMP NOT NULL DEFAULT NOW()
