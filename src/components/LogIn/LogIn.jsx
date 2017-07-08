@@ -10,11 +10,13 @@ class LogIn extends Component {
       userLogin: {
         username: '',
         password: ''
-      }
+      },
+      message: ''
     }
 
     this.updateUsername = this.updateUsername.bind(this);
     this.updatePassword = this.updatePassword.bind(this);
+    // this.updateMessage = this.updateMessage.bind(this);
     this.userLogin = this.userLogin.bind(this);
   }
 
@@ -36,7 +38,14 @@ class LogIn extends Component {
     });
   }
 
+  updateMessage(e) {
+    this.setState({
+      message: e.target.value
+    })
+  }
+
   userLogin(e) {
+    let loggedIn = false;
     e.preventDefault();
     console.log("posting the login!");
     fetch('/users/login', {
@@ -51,19 +60,24 @@ class LogIn extends Component {
     })
     .then(r => r.json())
     .then((data) => {
-      this.props.updateCurrentToken(data.token);
-      this.props.updateUserID(data.id);
-      this.props.updateUsername(data.username);
-      // this.setState({
-      //   userLogin: {
-      //     username: '',
-      //     password: ''
-      //   }
-      // }, () => {
-      //   console.log(this.state);
-      // })
+      if(!data.message) {
+        loggedIn = true;
+        this.props.updateCurrentToken(data.token);
+        this.props.updateUserID(data.id);
+        this.props.updateUsername(data.username);
+        let loginNotification = document.getElementById('login-notification');
+        loginNotification.style.display = "none";
+        this.props.router.push('/gamepage');
+      } else {
+        this.setState({
+          message: "Invalid username or password"
+        });
+        let loginNotification = document.getElementById('login-notification');
+        loginNotification.style.display = "inline-block";
+        loginNotification.innerHTML = this.state.message;
+      }
     })
-      this.props.router.push('/gamepage');
+    .catch(err => console.log("This is the error", err));
   }
 
   render(){
@@ -71,6 +85,7 @@ class LogIn extends Component {
       <div className="login-container">
         <h1>Log In</h1>
         <form>
+          <h1 id="login-notification"></h1>
           <label>Username:</label>
           <input
             type="text"

@@ -24,8 +24,9 @@ function authenticateUser(req, res, next) {
         res.status(200).json({ token: myToken, id: userID, username: username });
         console.log('successful sign in');
       } else {
-        res.status(500).send('wrong password');
-        console.log('wrong password!');
+        // res.status(500).send('wrong password');
+        res.status(500).json({message: "Incorrect username or password"})
+        console.log('wrong username or password!');
       }
     })
     .catch(error => console.log(error));
