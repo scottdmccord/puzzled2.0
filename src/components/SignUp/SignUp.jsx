@@ -62,27 +62,41 @@ class SignUp extends Component {
       <div className="signup-container">
         <h1>Sign Up</h1>
         <form>
-          <label>Username:</label>
-          <input
-            type="text"
-            placeholder="enter username"
-            value={this.state.username}
-            onChange={this.updateUsername}
-          />
-          <label>Password:</label>
-          <input
-            type="password"
-            placeholder="enter password"
-            value={this.state.password}
-            onChange={this.updatePassword}
-          />
-          <label>Email Address:</label>
-          <input
-            type="email"
-            placeholder="enter email"
-            value={this.state.email}
-            onChange={this.updateEmail}
-          />
+          <table>
+            <tr>
+              <td><label>Username:</label></td>
+              <td>
+                <input
+                  type="text"
+                  placeholder="enter username"
+                  value={this.state.username}
+                  onChange={this.updateUsername}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td><label>Password:</label></td>
+              <td>
+                <input
+                  type="password"
+                  placeholder="enter password"
+                  value={this.state.password}
+                  onChange={this.updatePassword}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td><label>Email Address:</label></td>
+              <td>
+                <input
+                  type="email"
+                  placeholder="enter email"
+                  value={this.state.email}
+                  onChange={this.updateEmail}
+                />
+              </td>
+            </tr>
+          </table>
           <button onClick={this.createUser}> Sign Up </button>
         </form>
       </div>
