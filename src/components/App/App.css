@@ -6,3 +6,11 @@ a {
   color: rgb(230, 230, 230);
   text-decoration: none;
 }
+
+input {
+  border: none;
+  border-bottom: 1px solid rgb(126, 126, 126);
+  background-color: rgb(22, 22, 22);
+  color: rgb(230, 230, 230);
+  font-size: 20px;
+}

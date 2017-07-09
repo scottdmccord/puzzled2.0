@@ -60,44 +60,46 @@ class SignUp extends Component {
   render(){
     return(
       <div className="signup-container">
-        <h1>Sign Up</h1>
-        <form>
+        <h1 id="signup-text">Sign Up</h1>
+        <form id="signup-form">
           <table>
-            <tr>
-              <td><label>Username:</label></td>
-              <td>
-                <input
-                  type="text"
-                  placeholder="enter username"
-                  value={this.state.username}
-                  onChange={this.updateUsername}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td><label>Password:</label></td>
-              <td>
-                <input
-                  type="password"
-                  placeholder="enter password"
-                  value={this.state.password}
-                  onChange={this.updatePassword}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td><label>Email Address:</label></td>
-              <td>
-                <input
-                  type="email"
-                  placeholder="enter email"
-                  value={this.state.email}
-                  onChange={this.updateEmail}
-                />
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <td><label>Username:</label></td>
+                <td className="right-column">
+                  <input
+                    type="text"
+                    placeholder="enter username"
+                    value={this.state.username}
+                    onChange={this.updateUsername}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label>Password:</label></td>
+                <td className="right-column">
+                  <input
+                    type="password"
+                    placeholder="enter password"
+                    value={this.state.password}
+                    onChange={this.updatePassword}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label>Email Address:</label></td>
+                <td className="right-column">
+                  <input
+                    type="email"
+                    placeholder="enter email"
+                    value={this.state.email}
+                    onChange={this.updateEmail}
+                  />
+                </td>
+              </tr>
+            </tbody>
           </table>
-          <button onClick={this.createUser}> Sign Up </button>
+          <button id="signup-button" onClick={this.createUser}> Sign Up </button>
         </form>
       </div>
     )

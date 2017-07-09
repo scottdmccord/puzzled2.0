@@ -7,3 +7,29 @@
   flex-direction: column;
   align-items: center;
 }
+
+#signup-text {
+  margin-top: 10%;
+}
+
+#signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+}
+
+.right-column {
+  padding-left: 10px;
+}
+
+#signup-button {
+  background-color: rgb(120, 80, 150);
+  color: rgb(230, 230, 230);
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  margin-top: 20px;
+}
