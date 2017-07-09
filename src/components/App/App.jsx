@@ -47,6 +47,7 @@ class App extends Component {
   render(){
     return(
       <container>
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet"></link>
         <NavBar
           logOut={this.logOut}
         />

@@ -3,6 +3,8 @@
   display: flex;
   flex-direction: row;
   color: rgb(230, 230, 230);
+  font-family: 'PT Sans', sans-serif;
+  height: 45px;
 }
 
 .navbar-category {
