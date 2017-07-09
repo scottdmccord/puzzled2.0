@@ -6,8 +6,7 @@ class Landing extends Component {
   render() {
     return(
       <div className="landing-container">
-        <h1> Puzzled 2.0 </h1>
-
+        <h1 id="welcome-title"> Puzzled 2.0 </h1>
         <div className="option-container">
           <div className="signup"><Link to="/signup">Sign Up</Link></div>
           <div className="login"><Link to="/login">Log In</Link></div>

@@ -9,7 +9,12 @@ function createUser(req, res, next) {
   db.none(`INSERT INTO users (username, password, email) VALUES ($1, $2, $3)`,
     [req.body.username, bcrypt.hashSync(req.body.password, salt), req.body.email])
   .then(next())
-  .catch(error => next(error));
+  .catch((error) => {
+    // console.log("THIS IS MY CONSOLE LOG ERROR: ", error.code);
+    // // if(error.error = "")
+    // res.status(500).json({errorMessage: "Username already exists. Please select another."})
+    next(error);
+    })
 }
 
 function authenticateUser(req, res, next) {

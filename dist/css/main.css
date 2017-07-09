@@ -1,24 +1,32 @@
 .navbar {
-  background-color: yellow;
-  border: solid 2px red;
+  background-color: rgb(22, 22, 22);
   display: flex;
   flex-direction: row;
+  color: rgb(230, 230, 230);
 }
 
 .navbar-category {
   font-size: 20px;
-  color: purple;
   padding: 10px 0px;
   display: inline-block;
   margin: 0px 10px;
 }
 .landing-container {
-  background-color: pink;
-  border: solid red 2px;
-  height: 80vh;
+  background-color: rgb(22, 22, 22);
+  height: 90vh;
+  color: rgb(230, 230, 230);
+}
+
+#welcome-title {
+  display: inline-block;
 }
 body {
   margin: 0;
+}
+
+a {
+  color: rgb(230, 230, 230);
+  text-decoration: none;
 }
 .login-container {
   background-color: #F2A5F7;

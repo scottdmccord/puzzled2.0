@@ -1,5 +1,9 @@
 .landing-container {
-  background-color: pink;
-  border: solid red 2px;
-  height: 80vh;
+  background-color: rgb(22, 22, 22);
+  height: 90vh;
+  color: rgb(230, 230, 230);
+}
+
+#welcome-title {
+  display: inline-block;
 }
