@@ -41,7 +41,19 @@ class App extends Component {
       currentToken: '',
       userID: '1',
       username: 'Guest'
-    })
+    });
+
+    // hide logout button
+    let logoutNav = document.getElementById('logout-nav');
+    logoutNav.style.display = 'none';
+
+    // display sign-up and log-in buttons
+    let signupNav = document.getElementById('signup-nav');
+    let loginNav = document.getElementById('login-nav');
+    signupNav.style.display = 'inline-block';
+    loginNav.style.display = 'inline-block';
+
+
   }
 
   render(){

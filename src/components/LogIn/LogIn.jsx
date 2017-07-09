@@ -68,6 +68,17 @@ class LogIn extends Component {
         let loginNotification = document.getElementById('login-notification');
         loginNotification.style.display = "none";
         this.props.router.push('/gamepage');
+
+        // show log out button
+        let logoutNav = document.getElementById('logout-nav');
+        logoutNav.style.display = "inline-block";
+
+        // hide sign-up and sign-in buttons
+        let signupNav = document.getElementById('signup-nav');
+        let loginNav = document.getElementById('login-nav');
+        signupNav.style.display = 'none';
+        loginNav.style.display = 'none';
+
       } else {
         this.setState({
           message: "Invalid username or password"
