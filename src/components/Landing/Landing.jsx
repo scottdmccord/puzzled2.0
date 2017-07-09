@@ -7,9 +7,10 @@ class Landing extends Component {
     return(
       <div className="landing-container">
         <h1 id="welcome-title"> Puzzled 2.0 </h1>
-        <div className="option-container">
-          <div className="signup"><Link to="/signup">Sign Up</Link></div>
-          <div className="login"><Link to="/login">Log In</Link></div>
+        <div id="welcome-text">Sip some tea, grab a blanket, and focus your mind. <br/> Ready for a puzzle?</div>
+        <div id="option-container">
+          <div id="signup" className="landing-button"><Link to="/signup">Sign Up</Link></div>
+          <div id="login" className="landing-button"><Link to="/login">Log In</Link></div>
         </div>
       </div>
       )
