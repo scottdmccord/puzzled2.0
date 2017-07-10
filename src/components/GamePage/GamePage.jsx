@@ -89,7 +89,7 @@ class GamePage extends Component {
     let startButton = document.getElementById('start-button');
     startButton.disabled = false;
     let buttonContainer = document.querySelectorAll('.board-button-container')[0];
-    buttonContainer.style.display = "inline-block";
+    buttonContainer.style.display = "inline-flex";
     console.log(buttonContainer)
     let difficultySelected = event.target.innerHTML;
     this.setState({ difficulty: difficultySelected });
@@ -411,16 +411,19 @@ class GamePage extends Component {
           </div>
 
         <div className="board-button-container">
-          <button id="start-button" className="start button" onClick={this.scramblePuzzle}>START</button>
-          <button className="new-puzzle button" onClick={this.newPuzzle}>NEW PUZZLE</button>
+          <button id="start-button" className="puzzle-button" onClick={this.scramblePuzzle}>START</button>
+          <button className="puzzle-button" onClick={this.newPuzzle}>NEW PUZZLE</button>
         </div>
 
 
       <div className="selection-modal">
-        <button onClick={this.createPuzzle}>Easy</button>
-        <button onClick={this.createPuzzle}>Medium</button>
-        <button onClick={this.createPuzzle}>Hard</button>
-        <button onClick={this.createPuzzle}>Expert</button>
+        <h2>Select your difficulty...</h2>
+        <div id="difficulty-selection">
+          <button className="difficulty-button" onClick={this.createPuzzle}>Easy</button>
+          <button className="difficulty-button" onClick={this.createPuzzle}>Medium</button>
+          <button className="difficulty-button" onClick={this.createPuzzle}>Hard</button>
+          <button className="difficulty-button" onClick={this.createPuzzle}>Expert</button>
+        </div>
       </div>
 
       </div>

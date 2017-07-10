@@ -142,6 +142,7 @@ input {
 
 .selection-modal {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -155,15 +156,42 @@ input {
 .board-button-container {
   display: none;
   z-index: 1;
+  width: 100%;
+  margin-top: 20px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 #welcome-text {
   text-align: center;
-  margin: 0px auto;
+  margin: 0px auto 20px auto;
 }
 
 .board-holder {
   display: inline-block;
+}
+
+.difficulty-button {
+  background-color: rgb(120, 80, 150);
+  color: rgb(230, 230, 230);
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  margin: 20px 10px 0 10px;
+}
+
+.puzzle-button {
+  background-color: rgb(120, 80, 150);
+  color: rgb(230, 230, 230);
+  width: 125px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 12px;
+  margin: 0px 10px 0 10px;
 }
 #info-panel-container {
   width: 250px;
@@ -173,6 +201,7 @@ input {
 
 #info-panel-content {
   display: none;
+  margin-left: 10px;
 }
 .board {
   box-sizing: border-box;
