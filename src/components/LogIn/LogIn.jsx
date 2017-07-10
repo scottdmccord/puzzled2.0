@@ -94,24 +94,36 @@ class LogIn extends Component {
   render(){
     return(
       <div className="login-container">
-        <h1>Log In</h1>
-        <form>
-          <h1 id="login-notification"></h1>
-          <label>Username:</label>
-          <input
-            type="text"
-            placeholder="enter username"
-            value={this.state.userLogin.username}
-            onChange={this.updateUsername}
-          />
-          <label>Password:</label>
-          <input
-            type="password"
-            placeholder="enter password"
-            value={this.state.userLogin.password}
-            onChange={this.updatePassword}
-          />
-          <button onClick={this.userLogin}>Enter</button>
+        <h1 id="login-text">Log In</h1>
+        <form id="login-form">
+          <h3 id="login-notification"></h3>
+          <table>
+            <tbody>
+              <tr>
+                <td><label>Username:</label></td>
+                <td className="right-column">
+                  <input
+                    type="text"
+                    placeholder="enter username"
+                    value={this.state.userLogin.username}
+                    onChange={this.updateUsername}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label>Password:</label></td>
+                <td className="right-column">
+                  <input
+                    type="password"
+                    placeholder="enter password"
+                    value={this.state.userLogin.password}
+                    onChange={this.updatePassword}
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button className="enter-button" onClick={this.userLogin}>Enter</button>
         </form>
       </div>
     )

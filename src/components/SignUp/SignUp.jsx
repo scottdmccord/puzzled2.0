@@ -99,7 +99,7 @@ class SignUp extends Component {
               </tr>
             </tbody>
           </table>
-          <button id="signup-button" onClick={this.createUser}> Sign Up </button>
+          <button className="enter-button" onClick={this.createUser}> Enter </button>
         </form>
       </div>
     )
