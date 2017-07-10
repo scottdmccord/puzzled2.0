@@ -37,7 +37,8 @@ class SignUp extends Component {
     });
   };
 
-  createUser() {
+  createUser(e) {
+    e.preventDefault();
     console.log('starting fetch');
     fetch('/users', {
       headers: {
@@ -56,7 +57,7 @@ class SignUp extends Component {
         console.log("Username already exists. Please choose another.");
         let signupNotification = document.getElementById('signup-notification');
         signupNotification.style.display = "inline-block";
-        signupNotification.style.innerHTML = "Username already exists. Please choose another.";
+        signupNotification.innerHTML = "Username already exists. Please choose another.";
       } else {
         let signupNotification = document.getElementById('signup-notification');
         signupNotification.style.display = "none";
