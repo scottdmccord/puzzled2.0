@@ -6,14 +6,28 @@ const salt = 10;
 
 function createUser(req, res, next) {
   console.log('creating new user');
-  db.none(`INSERT INTO users (username, password, email) VALUES ($1, $2, $3)`,
-    [req.body.username, bcrypt.hashSync(req.body.password, salt), req.body.email])
+
+  db.none(`
+    INSERT INTO users (
+      username,
+      password,
+      email
+    ) VALUES (
+      $1,
+      $2,
+      $3
+    )`,
+    [req.body.username,
+    bcrypt.hashSync(req.body.password, salt),
+    req.body.email]
+  )
   .then((data) => {
-    res.status(200).json({message: "User successfully created"})
+    next();
+    //res.status(200).json({message: "User successfully created"})
   })
   .catch((error) => {
-    console.log("THIS IS MY CONSOLE LOG ERROR: ", error.code);
-    res.status(500).json({error: "Username already exists. Please select another."})
+    // console.log("THIS IS MY CONSOLE LOG ERROR: ", error.code);
+    // res.status(500).json({error: "Username already exists. Please select another."})
     next(error);
     })
 }

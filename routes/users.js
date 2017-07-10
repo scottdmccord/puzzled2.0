@@ -4,12 +4,21 @@ const userRouter = express.Router();
 
 const sendJSONresp = (req, res) => res.json(res.rows);
 
-userRouter.post('/', createUser, (req, res, next) => {
+const showSuccessfulCreateUser = (req, res, next) => {
   res.json({message: "successfully created user"});
+}
+
+
+userRouter.post('/', createUser, showSuccessfulCreateUser, (err, req, res, next) => {
+  res.status(400).send('Username already taken');
 });
 
 userRouter.post('/login', authenticateUser, (req, res, next) => {
   res.json({message: "successfully signed in"});
 });
+
+userRouter.use((err, req, res, next) => {
+  res.send(401);
+})
 
 module.exports = userRouter;

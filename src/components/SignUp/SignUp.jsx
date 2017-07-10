@@ -53,7 +53,7 @@ class SignUp extends Component {
     })
     .then((data) => {
       console.log("hello");
-      if(data.status === 500) {
+      if(data.status === 400) {
         console.log("Username already exists. Please choose another.");
         let signupNotification = document.getElementById('signup-notification');
         signupNotification.style.display = "inline-block";

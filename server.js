@@ -24,6 +24,13 @@ app.use('/puzzles', puzzleRouter);
 app.use('/users', userRouter);
 app.use('/scores', scoresRouter);
 
+
+// // FROM JASON
+// app.use((err, req, res, next) => {
+//   console.error(err.stack, next);
+//     return res.sendStatus(500);
+// });
+
 app.get('*', function (request, response){
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
 })
