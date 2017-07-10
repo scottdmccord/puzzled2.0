@@ -50,11 +50,20 @@ class SignUp extends Component {
         email: this.state.email
       })
     })
-    .then(() => {
-      console.log("Changing route");
+    .then((data) => {
+      console.log("hello");
+      if(data.status === 500) {
+        console.log("Username already exists. Please choose another.");
+        let signupNotification = document.getElementById('signup-notification');
+        signupNotification.style.display = "inline-block";
+        signupNotification.style.innerHTML = "Username already exists. Please choose another.";
+      } else {
+        let signupNotification = document.getElementById('signup-notification');
+        signupNotification.style.display = "none";
+        this.props.router.push('/login');
+      }
     })
     .catch(error => console.log(error));
-    this.props.router.push('/login');
   }
 
   render(){
@@ -62,6 +71,7 @@ class SignUp extends Component {
       <div className="signup-container">
         <h1 id="signup-text">Sign Up</h1>
         <form id="signup-form">
+          <h3 id="signup-notification"></h3>
           <table>
             <tbody>
               <tr>

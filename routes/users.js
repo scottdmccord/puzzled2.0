@@ -4,7 +4,7 @@ const userRouter = express.Router();
 
 const sendJSONresp = (req, res) => res.json(res.rows);
 
-userRouter.post('/', createUser, (req, res) => {
+userRouter.post('/', createUser, (req, res, next) => {
   res.json({message: "successfully created user"});
 });
 

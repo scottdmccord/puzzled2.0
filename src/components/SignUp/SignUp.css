@@ -18,3 +18,7 @@
   align-items: center;
   font-size: 20px;
 }
+
+#signup-notification {
+  display: none;
+}
