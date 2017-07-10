@@ -411,8 +411,8 @@ class GamePage extends Component {
           </div>
 
         <div className="board-button-container">
-          <button id="start-button" className="puzzle-button" onClick={this.scramblePuzzle}>START</button>
-          <button className="puzzle-button" onClick={this.newPuzzle}>NEW PUZZLE</button>
+          <button id="start-button" className="puzzle-button" onClick={this.scramblePuzzle}>Start</button>
+          <button className="puzzle-button" onClick={this.newPuzzle}>New Puzzle</button>
         </div>
 
 

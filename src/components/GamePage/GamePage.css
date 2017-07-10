@@ -3,6 +3,7 @@
   height: calc(100vh - 45px);
   color: rgb(230, 230, 230);
   font-family: 'PT Sans', sans-serif;
+  min-width: 1200px;
 }
 
 .selection-modal {
@@ -55,6 +56,6 @@
   height: 30px;
   border: none;
   border-radius: 10px;
-  font-size: 12px;
+  font-size: 15px;
   margin: 0px 10px 0 10px;
 }
