@@ -9,10 +9,6 @@ class Board extends Component {
     return(
       <div className="board-container">
         <div className="board"></div>
-        <div className="board-button-container">
-          <button id="start-button" className="start button" onClick={this.props.scramblePuzzle}>START</button>
-          <button className="new-puzzle button" onClick={this.props.newPuzzle}>NEW PUZZLE</button>
-        </div>
       </div>
     )
   }

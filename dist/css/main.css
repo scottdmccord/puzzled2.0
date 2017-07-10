@@ -134,9 +134,10 @@ input {
   font-size: 20px;
 }
 .gamepage-container {
-  background-color: #F9AD8D;
-  border: solid red 2px;
-  height: 100vh;
+  background-color: rgb(22, 22, 22);
+  height: calc(100vh - 45px);
+  color: rgb(230, 230, 230);
+  font-family: 'PT Sans', sans-serif;
 }
 
 .selection-modal {
@@ -149,22 +150,38 @@ input {
   top: 20%;
   width: 40%;
   height: 40%;
-  background-color: black;
 }
 
 .board-button-container {
   display: none;
   z-index: 1;
 }
+
+#welcome-text {
+  text-align: center;
+  margin: 0px auto;
+}
+
+.board-holder {
+  display: inline-block;
+}
+#info-panel-container {
+  width: 250px;
+  display: inline-block;
+  float: left;
+}
+
+#info-panel-content {
+  display: none;
+}
 .board {
   box-sizing: border-box;
   margin: 0 auto;
-  display: flex;
+  display: inline-flex;
   height: 507px;
   width: 902px;
   flex-wrap: wrap;
   flex-direction: column;
-  /*border: solid black 2px;*/
 }
 
 /*# sourceMappingURL=main.css.map*/

@@ -1,0 +1,9 @@
+#info-panel-container {
+  width: 250px;
+  display: inline-block;
+  float: left;
+}
+
+#info-panel-content {
+  display: none;
+}

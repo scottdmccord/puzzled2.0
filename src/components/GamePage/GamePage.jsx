@@ -124,6 +124,8 @@ class GamePage extends Component {
         });
         selectionModal.style.display = 'none';
         this.generatePieces();
+        let infoPanel = document.getElementById('info-panel-content');
+        infoPanel.style.display = 'inline-block';
       })
       .catch(err => console.log(err));
   }
@@ -314,6 +316,8 @@ class GamePage extends Component {
     let board = document.querySelector('.board');
     board.innerHTML = '';
     clearInterval(this.state.timer);
+    let infoPanel = document.getElementById('info-panel-content');
+    infoPanel.style.display = 'none';
   }
 
   startTimer() {
@@ -378,32 +382,39 @@ class GamePage extends Component {
   render(){
     return(
       <div className="gamepage-container">
+        <h2 id="welcome-text"> Welcome, {this.props.username}!</h2>
 
-      <div className="gamepage-view">
-        <h1> Game Page </h1>
-        <h2> Welcome, {this.props.username}!</h2>
-        <InfoPanel
-          millisecondsONES={this.state.millisecondsONES}
-          millisecondsTENS={this.state.millisecondsTENS}
-          millisecondsHUNDREDS={this.state.millisecondsHUNDREDS}
-          secondsONES={this.state.secondsONES}
-          secondsTENS={this.state.secondsTENS}
-          minutesONES={this.state.minutesONES}
-          minutesTENS={this.state.minutesTENS}
-          hoursONES={this.state.hoursONES}
-          hoursTENS={this.state.hoursTENS}
-          highscore1={this.state.scores[0]['clock']}
-          highscore1_user={this.state.scores[0]['username']}
-          highscore2={this.state.scores[1]['clock']}
-          highscore2_user={this.state.scores[1]['username']}
-          highscore3={this.state.scores[2]['clock']}
-          highscore3_user={this.state.scores[2]['username']}
-        />
-        <Board
-          scramblePuzzle={this.scramblePuzzle}
-          newPuzzle={this.newPuzzle}
-        />
-      </div>
+          <div id="board-holder">
+          <InfoPanel
+            millisecondsONES={this.state.millisecondsONES}
+            millisecondsTENS={this.state.millisecondsTENS}
+            millisecondsHUNDREDS={this.state.millisecondsHUNDREDS}
+            secondsONES={this.state.secondsONES}
+            secondsTENS={this.state.secondsTENS}
+            minutesONES={this.state.minutesONES}
+            minutesTENS={this.state.minutesTENS}
+            hoursONES={this.state.hoursONES}
+            hoursTENS={this.state.hoursTENS}
+            highscore1={this.state.scores[0]['clock']}
+            highscore1_user={this.state.scores[0]['username']}
+            highscore2={this.state.scores[1]['clock']}
+            highscore2_user={this.state.scores[1]['username']}
+            highscore3={this.state.scores[2]['clock']}
+            highscore3_user={this.state.scores[2]['username']}
+          />
+
+
+          <Board
+            scramblePuzzle={this.scramblePuzzle}
+            newPuzzle={this.newPuzzle}
+          />
+          </div>
+
+        <div className="board-button-container">
+          <button id="start-button" className="start button" onClick={this.scramblePuzzle}>START</button>
+          <button className="new-puzzle button" onClick={this.newPuzzle}>NEW PUZZLE</button>
+        </div>
+
 
       <div className="selection-modal">
         <button onClick={this.createPuzzle}>Easy</button>
