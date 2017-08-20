@@ -3,11 +3,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
-import App from './components/App/App';
-import Landing from './components/Landing/Landing';
-import LogIn from './components/LogIn/LogIn';
-import SignUp from './components/SignUp/SignUp';
-import GamePage from './components/GamePage/GamePage';
+import App from './components/App/App.jsx';
+import Landing from './components/Landing/Landing.jsx';
+import LogIn from './components/LogIn/LogIn.jsx';
+import SignUp from './components/SignUp/SignUp.jsx';
+import GamePage from './components/GamePage/GamePage.jsx';
 
 ReactDOM.render((
   <Router history={browserHistory}>
