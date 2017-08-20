@@ -83,6 +83,7 @@ class GamePage extends Component {
     this.startTimer = this.startTimer.bind(this);
     this.tickTimer = this.tickTimer.bind(this);
     this.submitScore = this.submitScore.bind(this);
+    this.winClose = this.winClose.bind(this);
   }
 
   // Set the puzzle's difficulty, define the grid of puzzle pieces
@@ -250,9 +251,9 @@ class GamePage extends Component {
       }
     }
     if (this.state.win === true) {
+      document.getElementById('win-box').style.display = 'flex';
       setTimeout(() => {
         clearInterval(this.state.timer);
-        alert('You win! Click "New Puzzle" to try again.');
       }, 250);
 
       pieces.forEach(piece => {
@@ -369,6 +370,10 @@ class GamePage extends Component {
     }
   }
 
+  winClose() {
+    document.getElementById('win-box').style.display = 'none';
+  }
+
   render() {
     return (
       <div className="gamepage-container">
@@ -416,6 +421,7 @@ class GamePage extends Component {
           </div>
         </div>
 
+        <div id='win-box'><p>Congratulations, you're a jigsaw master!</p><div id='win-close' onClick={this.winClose}>Close</div></div>
       </div>
     );
   }
