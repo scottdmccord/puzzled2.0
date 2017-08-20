@@ -207,26 +207,30 @@ class GamePage extends Component {
   }
 
   assignTiles(event) {
+    console.log(event.srcElement.className);
     const turn = this.state.turn;
     const divA = this.state.divA;
     const divB = this.state.divB;
     const divAID = this.state.divAID;
     const divBID = this.state.divBID;
 
-    if (turn === 0) {
-      this.setState({
-        divA:   event.target.style.backgroundPosition,
-        divAID: event.target.id,
-      });
-      this.setState({ turn: 1 });
-    } else {
-      const divBBP = event.target.style.backgroundPosition;
-      this.setState({
-        divB:   divBBP,
-        divBID: event.target.id,
-      });
-      this.setState({ turn: 2 });
+    if(event.srcElement.className === 'piece') {
+      if (turn === 0) {
+        this.setState({
+          divA:   event.target.style.backgroundPosition,
+          divAID: event.target.id,
+        });
+        this.setState({ turn: 1 });
+      } else {
+        const divBBP = event.target.style.backgroundPosition;
+        this.setState({
+          divB:   divBBP,
+          divBID: event.target.id,
+        });
+        this.setState({ turn: 2 });
+      }
     }
+
   }
 
   swapTiles() {
