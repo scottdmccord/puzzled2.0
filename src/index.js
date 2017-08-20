@@ -8,6 +8,7 @@ import Landing from './components/Landing/Landing.jsx';
 import LogIn from './components/LogIn/LogIn.jsx';
 import SignUp from './components/SignUp/SignUp.jsx';
 import GamePage from './components/GamePage/GamePage.jsx';
+import Instructions from './components/Instructions/Instructions.jsx';
 
 ReactDOM.render((
   <Router history={browserHistory}>
@@ -16,6 +17,7 @@ ReactDOM.render((
       <Route path="/login" component={LogIn} />
       <Route path="/signup" component={SignUp} />
       <Route path="/gamepage" component={GamePage} />
+      <Route path="/instructions" component={Instructions} />
     </Route>
   </Router>
 ), document.querySelector('#root-container'));

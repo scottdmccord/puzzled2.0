@@ -47,7 +47,7 @@
   \**********************/
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _reactDom=__webpack_require__(/*! react-dom */ 37);var _reactDom2=_interopRequireDefault(_reactDom);var _reactRouter=__webpack_require__(/*! react-router */ 184);var _App=__webpack_require__(/*! ./components/App/App.jsx */ 247);var _App2=_interopRequireDefault(_App);var _Landing=__webpack_require__(/*! ./components/Landing/Landing.jsx */ 250);var _Landing2=_interopRequireDefault(_Landing);var _LogIn=__webpack_require__(/*! ./components/LogIn/LogIn.jsx */ 253);var _LogIn2=_interopRequireDefault(_LogIn);var _SignUp=__webpack_require__(/*! ./components/SignUp/SignUp.jsx */ 255);var _SignUp2=_interopRequireDefault(_SignUp);var _GamePage=__webpack_require__(/*! ./components/GamePage/GamePage.jsx */ 257);var _GamePage2=_interopRequireDefault(_GamePage);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}/* eslint-env browser, node */_reactDom2.default.render(_react2.default.createElement(_reactRouter.Router,{history:_reactRouter.browserHistory},_react2.default.createElement(_reactRouter.Route,{path:'/',component:_App2.default},_react2.default.createElement(_reactRouter.IndexRoute,{component:_Landing2.default}),_react2.default.createElement(_reactRouter.Route,{path:'/login',component:_LogIn2.default}),_react2.default.createElement(_reactRouter.Route,{path:'/signup',component:_SignUp2.default}),_react2.default.createElement(_reactRouter.Route,{path:'/gamepage',component:_GamePage2.default}))),document.querySelector('#root-container'));
+	'use strict';var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _reactDom=__webpack_require__(/*! react-dom */ 37);var _reactDom2=_interopRequireDefault(_reactDom);var _reactRouter=__webpack_require__(/*! react-router */ 184);var _App=__webpack_require__(/*! ./components/App/App.jsx */ 247);var _App2=_interopRequireDefault(_App);var _Landing=__webpack_require__(/*! ./components/Landing/Landing.jsx */ 250);var _Landing2=_interopRequireDefault(_Landing);var _LogIn=__webpack_require__(/*! ./components/LogIn/LogIn.jsx */ 253);var _LogIn2=_interopRequireDefault(_LogIn);var _SignUp=__webpack_require__(/*! ./components/SignUp/SignUp.jsx */ 255);var _SignUp2=_interopRequireDefault(_SignUp);var _GamePage=__webpack_require__(/*! ./components/GamePage/GamePage.jsx */ 257);var _GamePage2=_interopRequireDefault(_GamePage);var _Instructions=__webpack_require__(/*! ./components/Instructions/Instructions.jsx */ 263);var _Instructions2=_interopRequireDefault(_Instructions);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}_reactDom2.default.render(_react2.default.createElement(_reactRouter.Router,{history:_reactRouter.browserHistory},_react2.default.createElement(_reactRouter.Route,{path:'/',component:_App2.default},_react2.default.createElement(_reactRouter.IndexRoute,{component:_Landing2.default}),_react2.default.createElement(_reactRouter.Route,{path:'/login',component:_LogIn2.default}),_react2.default.createElement(_reactRouter.Route,{path:'/signup',component:_SignUp2.default}),_react2.default.createElement(_reactRouter.Route,{path:'/gamepage',component:_GamePage2.default}),_react2.default.createElement(_reactRouter.Route,{path:'/instructions',component:_Instructions2.default}))),document.querySelector('#root-container'));/* eslint-env browser, node */
 
 /***/ }),
 /* 1 */
@@ -8931,6 +8931,24 @@
 /*!****************************************!*\
   !*** ./src/components/Board/Board.css ***!
   \****************************************/
+/***/ (function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 263 */
+/*!******************************************************!*\
+  !*** ./src/components/Instructions/Instructions.jsx ***!
+  \******************************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _reactRouter=__webpack_require__(/*! react-router */ 184);var _Instructions=__webpack_require__(/*! ./Instructions.css */ 264);var _Instructions2=_interopRequireDefault(_Instructions);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var Instructions=function(_Component){_inherits(Instructions,_Component);function Instructions(){_classCallCheck(this,Instructions);return _possibleConstructorReturn(this,(Instructions.__proto__||Object.getPrototypeOf(Instructions)).apply(this,arguments));}_createClass(Instructions,[{key:'render',value:function render(){return _react2.default.createElement('div',null,' INSTRUCTIONS ');}}]);return Instructions;}(_react.Component);exports.default=Instructions;
+
+/***/ }),
+/* 264 */
+/*!******************************************************!*\
+  !*** ./src/components/Instructions/Instructions.css ***!
+  \******************************************************/
 /***/ (function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
