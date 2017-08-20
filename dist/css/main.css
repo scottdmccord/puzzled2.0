@@ -248,5 +248,21 @@ input {
   flex-wrap: wrap;
   flex-direction: column;
 }
+.instructions-container {
+  color: rgb(230, 230, 230);
+  font-family: 'PT Sans', sans-serif;
+  text-align: justify;
+  margin: 0 30%;
+}
+
+.instruction-image {
+  width: 100%;
+  height: auto;
+  outline: solid .5px white;
+}
+
+.align-center {
+  text-align: center;
+}
 
 /*# sourceMappingURL=main.css.map*/
