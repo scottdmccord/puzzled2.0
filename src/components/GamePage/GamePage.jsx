@@ -92,7 +92,6 @@ class GamePage extends Component {
     startButton.disabled = false;
     const buttonContainer = document.querySelectorAll('.board-button-container')[0];
     buttonContainer.style.display = 'inline-flex';
-    console.log(buttonContainer);
     const difficultySelected = event.target.innerHTML;
     this.setState({ difficulty: difficultySelected });
     const lowercaseDifficulty = difficultySelected.toLowerCase();
@@ -111,7 +110,6 @@ class GamePage extends Component {
 
   // Fetches puzzles from the psql database, select a random one, and saves its information in state.
   loadPuzzle(difficulty) {
-    console.log(`the selected difficulty is ${difficulty}`);
     const board = document.querySelector('.board');
     const selectionModal = document.querySelector('.selection-modal');
     fetch('/puzzles')
@@ -134,12 +132,9 @@ class GamePage extends Component {
 
   // load the high scores
   loadScores(puzzleId, difficulty) {
-    console.log('Puzzle ID is: ', puzzleId);
-    console.log('Difficulty is: ', difficulty);
     fetch(`/scores/${puzzleId}/${difficulty}`)
       .then(r => r.json())
       .then((data) => {
-        console.log(data);
         this.setState({
           scores: data,
         });
@@ -201,6 +196,7 @@ class GamePage extends Component {
       const puzzlePieces = document.querySelectorAll('.piece');
       for (let i = 0; i < puzzlePieces.length; i++) {
         puzzlePieces.className = 'clickPiece';
+        puzzlePieces[i].style.outline = 'solid white 1px';
         const target = Math.floor(Math.random() * puzzlePieces.length - 1) + 1;
         const target2 = Math.floor(Math.random() * puzzlePieces.length - 1) + 1;
         board.insertBefore(puzzlePieces[target], puzzlePieces[target2]);
@@ -217,15 +213,12 @@ class GamePage extends Component {
     const divBID = this.state.divBID;
 
     if (turn === 0) {
-      console.log('turn 0');
       this.setState({
         divA:   event.target.style.backgroundPosition,
         divAID: event.target.id,
       });
       this.setState({ turn: 1 });
-      console.log(turn);
     } else {
-      console.log('turn 1');
       const divBBP = event.target.style.backgroundPosition;
       this.setState({
         divB:   divBBP,
@@ -245,7 +238,6 @@ class GamePage extends Component {
       divB.id = this.state.divAID;
       this.setState({ turn: 0 });
     } else {
-      console.log('no swap');
     }
   }
 
@@ -255,23 +247,25 @@ class GamePage extends Component {
     for (let i = 0; i < pieces.length; i++) {
       if (pieces[i].id != (`piece${i}`)) {
         this.setState({ win: false });
-        console.log('No win');
       }
     }
     if (this.state.win === true) {
-      console.log('win');
       setTimeout(() => {
         clearInterval(this.state.timer);
         alert('You win! Click "New Puzzle" to try again.');
       }, 250);
+
+      pieces.forEach(piece => {
+        piece.style.outline = 'none';
+      });
+
       const score = parseInt(this.state.hoursTENS.toString() + this.state.hoursONES.toString() + this.state.minutesTENS.toString() + this.state.minutesONES.toString() + this.state.secondsTENS.toString() + this.state.secondsONES.toString() + this.state.millisecondsHUNDREDS.toString() + this.state.millisecondsTENS.toString());
       const scoreFormatted = `${this.state.hoursTENS.toString() + this.state.hoursONES.toString()}:${this.state.minutesTENS.toString()}${this.state.minutesONES.toString()}:${this.state.secondsTENS.toString()}${this.state.secondsONES.toString()}:${this.state.millisecondsHUNDREDS.toString()}${this.state.millisecondsTENS.toString()}`;
-      console.log(score);
-      console.log(scoreFormatted);
       this.setState({ score, scoreFormatted });
       const board = document.querySelector('.board');
       board.removeEventListener('click', this.moveTileFunctions);
       this.submitScore();
+
     }
   }
 
@@ -300,9 +294,6 @@ class GamePage extends Component {
 
   assignScores() {
     this.refreshScores(this.state.puzzleID);
-    console.log('checking scores!');
-    console.log(this.state.score, ' is the score');
-    console.log('this is the original highscore: ', this.state.highscore1_score);
     this.scoreComparison();
     this.updateScores(this.state.puzzleID);
   }
@@ -310,7 +301,6 @@ class GamePage extends Component {
   newPuzzle() {
     const buttonContainer = document.querySelectorAll('.board-button-container')[0];
     buttonContainer.style.display = 'none';
-    console.log('new puzzle!');
     const selectionModal = document.querySelector('.selection-modal');
     selectionModal.style.display = 'flex';
     this.setState(this.baseState);
@@ -323,7 +313,6 @@ class GamePage extends Component {
   }
 
   startTimer() {
-    console.log('starting timer');
     this.setState({ timer: setInterval(this.tickTimer, 10) });
   }
 
