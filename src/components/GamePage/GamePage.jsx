@@ -256,9 +256,7 @@ class GamePage extends Component {
     }
     if (this.state.win === true) {
       document.getElementById('win-box').style.display = 'flex';
-      setTimeout(() => {
-        clearInterval(this.state.timer);
-      }, 250);
+      clearInterval(this.state.timer);
 
       pieces.forEach(piece => {
         piece.style.outline = 'none';
@@ -376,6 +374,7 @@ class GamePage extends Component {
 
   winClose() {
     document.getElementById('win-box').style.display = 'none';
+    this.loadScores(this.state.puzzleId, this.state.difficulty);
   }
 
   render() {
