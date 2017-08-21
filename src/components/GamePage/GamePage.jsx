@@ -136,6 +136,7 @@ class GamePage extends Component {
     fetch(`/scores/${puzzleId}/${difficulty}`)
       .then(r => r.json())
       .then((data) => {
+        console.log(data);
         this.setState({
           scores: data,
         });
@@ -374,7 +375,8 @@ class GamePage extends Component {
 
   winClose() {
     document.getElementById('win-box').style.display = 'none';
-    this.loadScores(this.state.puzzleId, this.state.difficulty);
+    console.log('puzzle id is: ', this.state.puzzleID);
+    this.loadScores(this.state.puzzleID, this.state.difficulty.toLowerCase());
   }
 
   render() {

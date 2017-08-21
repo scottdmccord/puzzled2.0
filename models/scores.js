@@ -14,6 +14,7 @@ function getScores(req, res, next) {
           LIMIT 3`, [req.params.id, req.params.difficulty])
     .then((scores) => {
       res.rows = scores;
+      console.log(res.rows);
       next();
     })
     .catch(err => console.log(err));
