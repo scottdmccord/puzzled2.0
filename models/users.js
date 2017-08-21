@@ -49,7 +49,9 @@ function authenticateUser(req, res, next) {
         console.log('wrong username or password!');
       }
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      next(error);
+    });
 }
 
 module.exports = {

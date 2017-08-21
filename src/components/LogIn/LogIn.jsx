@@ -71,7 +71,7 @@ class LogIn extends Component {
 
         // show log out button
         let logoutNav = document.getElementById('logout-nav');
-        logoutNav.style.display = "inline-block";
+        logoutNav.style.display = 'inline-block';
 
         // hide sign-up and sign-in buttons
         let signupNav = document.getElementById('signup-nav');
@@ -88,7 +88,14 @@ class LogIn extends Component {
         loginNotification.innerHTML = this.state.message;
       }
     })
-    .catch(err => console.log("This is the error", err));
+    .catch(err => {
+      this.setState({
+          message: "Invalid username or password"
+        });
+      let loginNotification = document.getElementById('login-notification');
+      loginNotification.style.display = "inline-block";
+      loginNotification.innerHTML = this.state.message;
+    });
   }
 
   render(){
