@@ -9,7 +9,7 @@ const showSuccessfulCreateUser = (req, res, next) => {
 }
 
 
-userRouter.post('/', createUser, showSuccessfulCreateUser, (err, req, res, next) => {
+userRouter.post('/', createUser, showSuccessfulCreateUser, authenticateUser, (err, req, res, next) => {
   res.status(400).send('Username already taken');
 });
 

@@ -375,7 +375,6 @@ class GamePage extends Component {
 
   winClose() {
     document.getElementById('win-box').style.display = 'none';
-    console.log('puzzle id is: ', this.state.puzzleID);
     this.loadScores(this.state.puzzleID, this.state.difficulty.toLowerCase());
   }
 

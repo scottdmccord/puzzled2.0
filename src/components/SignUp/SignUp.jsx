@@ -61,10 +61,49 @@ class SignUp extends Component {
       } else {
         let signupNotification = document.getElementById('signup-notification');
         signupNotification.style.display = "none";
-        this.props.router.push('/login');
+        this.userLogin(e);
+        // this.props.router.push('/login');
       }
     })
     .catch(error => console.log(error));
+  }
+
+    userLogin(e) {
+    let loggedIn = false;
+    e.persist();
+    console.log("posting the login!");
+    fetch('/users/login', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password
+      })
+    })
+    .then(r => r.json())
+    .then((data) => {
+
+        loggedIn = true;
+        this.props.updateCurrentToken(data.token);
+        this.props.updateUserID(data.id);
+        this.props.updateUsername(data.username);
+        this.props.router.push('/gamepage');
+
+        // show log out button
+        let logoutNav = document.getElementById('logout-nav');
+        logoutNav.style.display = 'inline-block';
+
+        // hide sign-up and sign-in buttons
+        let signupNav = document.getElementById('signup-nav');
+        let loginNav = document.getElementById('login-nav');
+        signupNav.style.display = 'none';
+        loginNav.style.display = 'none';
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
 
   render(){
